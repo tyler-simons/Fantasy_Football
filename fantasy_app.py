@@ -7,7 +7,7 @@ import altair as alt
 
 # Read in data
 def read_fantasy_data():
-    return pd.read_csv("fantasty/fantasy_data_2020.csv")
+    return pd.read_csv("fantasy/fantasy_data_2020.csv")
 
 fantasy_data = read_fantasy_data()
 
