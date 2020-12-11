@@ -42,10 +42,10 @@ melt_week <- function(single_week_raw){
   single_week <- split_list %>% map(~(.) %>% build_tib()) %>% bind_rows()
   top_6_wins <- single_week %>% select(team_name, points) %>% distinct() %>% 
     mutate(points = as.numeric(points)) %>% arrange(desc(points)) %>%
-    mutate(top6_win = c(rep(TRUE, nrow(.)/2), rep(FALSE, nrow(.)/2))) %>%
+    mutate(top6_win = as.numeric(c(rep(TRUE, nrow(.)/2), rep(FALSE, nrow(.)/2)))) %>%
     select(-points)
   final_week <- single_week %>% left_join(top_6_wins, by = "team_name")
-  return(single_week)
+  return(final_week)
 }
 
 # Map to entire dataset
