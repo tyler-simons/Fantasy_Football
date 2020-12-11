@@ -1,4 +1,3 @@
-from altair.vegalite.v4.schema.core import Legend
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -71,6 +70,24 @@ melted_points = selected_team[['week', 'points', 'points_against']].\
     melt(id_vars = ['week'], value_vars=['points', 'points_against'])
 
 
+# Right column
+tp_df = fantasy_data.query("team_name == @selected_team_name")
+tp_df.tp_points = [float(i) for i in tp_df.tp_points.to_list()]
+top_scorers = tp_df.groupby('tp_names', group_keys=False).agg('count').reset_index()
+
+top_scorers_plot = alt.Chart(top_scorers).\
+    mark_bar(size=15).\
+    encode(
+        x=alt.X('tp_names:O', axis=alt.Axis(title="Player", labels=True, ticks=True), sort = '-y'), 
+        y = alt.Y('tp_points:Q', axis = alt.Axis(title="Times a top performer"))).\
+    properties(width =800)
+
+st.markdown("## Top performers")
+st.markdown("#### How many times each player was in the top 3 performers on the team")
+
+st.altair_chart(top_scorers_plot)
+
+
 # Points per week
 st.markdown("## Points per week plot")
 st.markdown("#### Points scored for (green) vs points against (orange)")
@@ -88,19 +105,3 @@ week_plot = alt.Chart(melted_points).\
 
 st.altair_chart(week_plot)
 
-# Right column
-tp_df = fantasy_data.query("team_name == @selected_team_name")
-tp_df.tp_points = [float(i) for i in tp_df.tp_points.to_list()]
-top_scorers = tp_df.groupby('tp_names', group_keys=False).agg('count').reset_index()
-
-top_scorers_plot = alt.Chart(top_scorers).\
-    mark_bar(size=15).\
-    encode(
-        x=alt.X('tp_names:O', axis=alt.Axis(title="Player", labels=True, ticks=True), sort = '-y'), 
-        y = alt.Y('tp_points:Q', axis = alt.Axis(title="Times a top performer"))).\
-    properties(width =800)
-
-st.markdown("## Top performers")
-st.markdown("#### How many times each player was in the top 3 performers on the team")
-
-st.altair_chart(top_scorers_plot)
