@@ -5,7 +5,10 @@ from datetime import datetime, timedelta
 import altair as alt
 from espn_data.get_espn_data import *
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide",
+    page_title="Fantasy Football Dashboard",
+)
 owners = [team.owner for team in our_league.teams]
 teams = [team.team_name for team in our_league.teams]
 owner_names = pd.DataFrame({"owners": owners, "teams": teams})
