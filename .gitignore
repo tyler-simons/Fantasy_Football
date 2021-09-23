@@ -1,3 +1,9 @@
 fantasy_streamlit/*
 espn-api/*
 fantasy/.Rproj.user/*
+.streamlit/*
+.vscode/*
+.~*
+__pycache__
+*.Rproj
+*.ods

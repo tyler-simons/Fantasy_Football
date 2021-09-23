@@ -1,0 +1,73 @@
+team_name,week,points,name,tp_names,tp_points,opponent,h2h_win,points_against,top6_win,year
+Derrickle McNichols,1,104.74,tp1,Tyreek Hill,32.6,Qaptain Qirk And the Qrew,True,103.84,True,2021
+Derrickle McNichols,1,104.74,tp2,Matthew Stafford,25.34,Qaptain Qirk And the Qrew,True,103.84,True,2021
+Derrickle McNichols,1,104.74,tp3,Mike Williams,18.2,Qaptain Qirk And the Qrew,True,103.84,True,2021
+Qaptain Qirk And the Qrew,1,103.84,tp1,Adam Thielen,25.7,Derrickle McNichols,False,104.74,True,2021
+Qaptain Qirk And the Qrew,1,103.84,tp2,Kirk Cousins,23.04,Derrickle McNichols,False,104.74,True,2021
+Qaptain Qirk And the Qrew,1,103.84,tp3,Jamaal Williams,21.0,Derrickle McNichols,False,104.74,True,2021
+Edward  Jordyhands ,1,108.96,tp1,Jameis Winston,29.62,Born Again Christian,True,100.78,True,2021
+Edward  Jordyhands ,1,108.96,tp2,Tom Brady,28.16,Born Again Christian,True,100.78,True,2021
+Edward  Jordyhands ,1,108.96,tp3,Tyler Lockett,25.0,Born Again Christian,True,100.78,True,2021
+Born Again Christian,1,100.78,tp1,Patrick Mahomes,34.28,Edward  Jordyhands ,False,108.96,True,2021
+Born Again Christian,1,100.78,tp2,Christian McCaffrey,23.2,Edward  Jordyhands ,False,108.96,True,2021
+Born Again Christian,1,100.78,tp3,Ty'Son Williams,16.9,Edward  Jordyhands ,False,108.96,True,2021
+Murray Up Offense,1,137.26,tp1,Kyler Murray,33.56,Jerry Jones'  Blood Boy,True,133.2,True,2021
+Murray Up Offense,1,137.26,tp2,T.J. Hockenson,21.7,Jerry Jones'  Blood Boy,True,133.2,True,2021
+Murray Up Offense,1,137.26,tp3,Nick Chubb,21.1,Jerry Jones'  Blood Boy,True,133.2,True,2021
+Jerry Jones'  Blood Boy,1,133.2,tp1,Amari Cooper,33.4,Murray Up Offense,False,137.26,True,2021
+Jerry Jones'  Blood Boy,1,133.2,tp2,Corey Davis,24.2,Murray Up Offense,False,137.26,True,2021
+Jerry Jones'  Blood Boy,1,133.2,tp3,Joe Mixon,24.0,Murray Up Offense,False,137.26,True,2021
+49ers QB of the Future,1,75.94,tp1,Travis Kelce,22.6,Joe Rogan on Horse Dewormer,False,107.42,False,2021
+49ers QB of the Future,1,75.94,tp2,CeeDee Lamb,20.9,Joe Rogan on Horse Dewormer,False,107.42,False,2021
+49ers QB of the Future,1,75.94,tp3,Ja'Marr Chase,19.4,Joe Rogan on Horse Dewormer,False,107.42,False,2021
+Joe Rogan on Horse Dewormer,1,107.42,tp1,Rob Gronkowski,25.0,49ers QB of the Future,True,75.94,True,2021
+Joe Rogan on Horse Dewormer,1,107.42,tp2,Antonio Brown,22.2,49ers QB of the Future,True,75.94,True,2021
+Joe Rogan on Horse Dewormer,1,107.42,tp3,Dalvin Cook,17.4,49ers QB of the Future,True,75.94,True,2021
+The Salty Spitoon,1,76.3,tp1,Jalen Hurts,28.76,ACL Count: 1,False,83.72,False,2021
+The Salty Spitoon,1,76.3,tp2,Darren Waller,22.5,ACL Count: 1,False,83.72,False,2021
+The Salty Spitoon,1,76.3,tp3,Lamar Jackson,18.0,ACL Count: 1,False,83.72,False,2021
+ACL Count: 1,1,83.72,tp1,Trevor Lawrence,20.08,The Salty Spitoon,True,76.3,False,2021
+ACL Count: 1,1,83.72,tp2,Steelers D/ST,17.1,The Salty Spitoon,True,76.3,False,2021
+ACL Count: 1,1,83.72,tp3,Ryan Tannehill,14.18,The Salty Spitoon,True,76.3,False,2021
+Finding Deebo,1,100.06,tp1,Deebo Samuel,28.4,12th in Name Power Rankings,True,86.32,False,2021
+Finding Deebo,1,100.06,tp2,Russell Wilson,27.06,12th in Name Power Rankings,True,86.32,False,2021
+Finding Deebo,1,100.06,tp3,Cooper Kupp,21.3,12th in Name Power Rankings,True,86.32,False,2021
+12th in Name Power Rankings,1,86.32,tp1,Dak Prescott,29.42,Finding Deebo,False,100.06,False,2021
+12th in Name Power Rankings,1,86.32,tp2,Miles Sanders,15.3,Finding Deebo,False,100.06,False,2021
+12th in Name Power Rankings,1,86.32,tp3,Baker Mayfield,13.64,Finding Deebo,False,100.06,False,2021
+Qaptain Qirk And the Qrew,2,90.26,tp1,Kirk Cousins,25.26,Born Again Christian,False,118.42,True,2021
+Qaptain Qirk And the Qrew,2,90.26,tp2,Tony Pollard,22.5,Born Again Christian,False,118.42,True,2021
+Qaptain Qirk And the Qrew,2,90.26,tp3,Ezekiel Elliott,16.7,Born Again Christian,False,118.42,True,2021
+Born Again Christian,2,118.42,tp1,Patrick Mahomes,25.02,Qaptain Qirk And the Qrew,True,90.26,True,2021
+Born Again Christian,2,118.42,tp2,Christian McCaffrey,22.2,Qaptain Qirk And the Qrew,True,90.26,True,2021
+Born Again Christian,2,118.42,tp3,Mike Evans,22.0,Qaptain Qirk And the Qrew,True,90.26,True,2021
+Jerry Jones'  Blood Boy,2,75.26,tp1,Josh Allen,16.66,Derrickle McNichols,False,127.52,False,2021
+Jerry Jones'  Blood Boy,2,75.26,tp2,Chris Carson,15.1,Derrickle McNichols,False,127.52,False,2021
+Jerry Jones'  Blood Boy,2,75.26,tp3,DeAndre Hopkins,13.4,Derrickle McNichols,False,127.52,False,2021
+Derrickle McNichols,2,127.52,tp1,Derrick Henry,45.7,Jerry Jones'  Blood Boy,True,75.26,True,2021
+Derrickle McNichols,2,127.52,tp2,Mike Williams,18.6,Jerry Jones'  Blood Boy,True,75.26,True,2021
+Derrickle McNichols,2,127.52,tp3,Matthew Stafford,17.22,Jerry Jones'  Blood Boy,True,75.26,True,2021
+Joe Rogan on Horse Dewormer,2,78.02,tp1,Aaron Rodgers,26.8,Edward  Jordyhands ,False,121.34,False,2021
+Joe Rogan on Horse Dewormer,2,78.02,tp2,Marquise Brown,21.3,Edward  Jordyhands ,False,121.34,False,2021
+Joe Rogan on Horse Dewormer,2,78.02,tp3,Rob Gronkowski,17.9,Edward  Jordyhands ,False,121.34,False,2021
+Edward  Jordyhands ,2,121.34,tp1,Tom Brady,29.64,Joe Rogan on Horse Dewormer,True,78.02,True,2021
+Edward  Jordyhands ,2,121.34,tp2,Tyler Lockett,28.8,Joe Rogan on Horse Dewormer,True,78.02,True,2021
+Edward  Jordyhands ,2,121.34,tp3,Michael Pittman Jr.,17.3,Joe Rogan on Horse Dewormer,True,78.02,True,2021
+ACL Count: 1,2,78.38,tp1,Ryan Tannehill,15.58,Murray Up Offense,False,111.0,False,2021
+ACL Count: 1,2,78.38,tp2,Justin Jefferson,15.5,Murray Up Offense,False,111.0,False,2021
+ACL Count: 1,2,78.38,tp3,Stefon Diggs,14.0,Murray Up Offense,False,111.0,False,2021
+Murray Up Offense,2,111.0,tp1,Kyler Murray,35.1,ACL Count: 1,True,78.38,True,2021
+Murray Up Offense,2,111.0,tp2,Rondale Moore,21.9,ACL Count: 1,True,78.38,True,2021
+Murray Up Offense,2,111.0,tp3,T.J. Hockenson,16.6,ACL Count: 1,True,78.38,True,2021
+12th in Name Power Rankings,2,89.98,tp1,Terry McLaurin,23.2,49ers QB of the Future,True,80.78,False,2021
+12th in Name Power Rankings,2,89.98,tp2,Austin Ekeler,18.0,49ers QB of the Future,True,80.78,False,2021
+12th in Name Power Rankings,2,89.98,tp3,DJ Moore,17.9,49ers QB of the Future,True,80.78,False,2021
+49ers QB of the Future,2,80.78,tp1,Travis Kelce,21.4,12th in Name Power Rankings,False,89.98,False,2021
+49ers QB of the Future,2,80.78,tp2,Zack Moss,14.4,12th in Name Power Rankings,False,89.98,False,2021
+49ers QB of the Future,2,80.78,tp3,CeeDee Lamb,13.4,12th in Name Power Rankings,False,89.98,False,2021
+Finding Deebo,2,133.12,tp1,Cooper Kupp,33.3,The Salty Spitoon,True,132.06,True,2021
+Finding Deebo,2,133.12,tp2,Russell Wilson,24.32,The Salty Spitoon,True,132.06,True,2021
+Finding Deebo,2,133.12,tp3,Henry Ruggs III,21.0,The Salty Spitoon,True,132.06,True,2021
+The Salty Spitoon,2,132.06,tp1,Aaron Jones,38.5,Finding Deebo,False,133.12,True,2021
+The Salty Spitoon,2,132.06,tp2,Lamar Jackson,33.26,Finding Deebo,False,133.12,True,2021
+The Salty Spitoon,2,132.06,tp3,Jalen Hurts,21.8,Finding Deebo,False,133.12,True,2021
