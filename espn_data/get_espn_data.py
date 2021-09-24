@@ -16,7 +16,7 @@ def box_score_to_csv(box_match, week, year, our_league):
 
     # Home team
     home_points = box_match_1.home_score
-    home_team_name = box_match_1.home_team.team_name
+    home_team_name = box_match_1.home_team.owner
 
     home_player_points = []
     for player in box_match_1.home_lineup:
@@ -27,7 +27,7 @@ def box_score_to_csv(box_match, week, year, our_league):
 
     # Away team
     away_points = box_match_1.away_score
-    away_team_name = box_match_1.away_team.team_name
+    away_team_name = box_match_1.away_team.owner
 
     away_player_points = []
     for player in box_match_1.away_lineup:
@@ -101,7 +101,7 @@ def weeks_since_start_season():
     return total_weeks
 
 
-@st.experimental_singleton
+@st.experimental_memo(ttl=36000)
 def get_2021_season_data():
     total_weeks = weeks_since_start_season()
 

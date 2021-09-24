@@ -4,6 +4,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import altair as alt
 from espn_data.get_espn_data import *
+from espn_data.ff_probability import *
 
 st.set_page_config(
     layout="wide",
@@ -119,6 +120,14 @@ st.markdown("----")
 
 ## Team selection
 
+with st.expander("Luck"):
+    liklihood_table = (
+        build_probability_distribution(fantasy_data)
+        .sort_index(ascending=False)
+        .cumsum(axis=0)
+        .sort_index(ascending=True)
+    )
+    format_dict = {col: "{:,.1%}".format for col in liklihood_table.columns}
 
 with st.expander("Teams"):
     teams = fantasy_data["team_name"].drop_duplicates().tolist()
