@@ -130,13 +130,13 @@ with st.expander("Matchup Luck"):
     st.markdown("# How lucky have your matchups been?")
     st.markdown("We simulated 10,000 seasons with a random order of Head to Head matchups")
     st.markdown(
-        "This table shows the cumulative probability that each team will have at least X wins thus far in the season"
+        "This table shows the cumulative probability that each team will have at least X wins thus far in the season. If you have MORE wins than the 50% line, you are lucky. "
     )
 
     st.table(
         liklihood_table.style.bar(color="darkblue")
         .format(format_dict)
-        .set_caption("Liklihood for having at least X wins so far")
+        .set_caption("Likelihood for having at least X wins so far")
     )
 
 with st.expander("Teams"):
