@@ -4,15 +4,13 @@ import numpy as np
 from datetime import datetime, timedelta
 import altair as alt
 from espn_data.get_espn_data import *
-from espn_data.ff_probability import *
+from espn_data import ff_probability
 
 st.set_page_config(
     layout="wide",
     page_title="Fantasy Football Dashboard",
 )
-owners = [team.owner for team in our_league.teams]
-teams = [team.team_name for team in our_league.teams]
-owner_names = pd.DataFrame({"owners": owners, "teams": teams})
+
 
 # Top of page
 st.title("Purple Drank Fantasy Scoreboard")
@@ -62,10 +60,9 @@ total_wins = summary_table_agg.assign(total_wins=summary_table_agg["h2h_win"] + 
 )
 
 # Add owners names
-added_owners = total_wins.merge(owner_names, left_index=True, right_on="teams")
-added_owners = added_owners.set_index("owners")
+added_owners = total_wins
 
-top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_on="teams")["top_scorer_sum"]
+top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_index=True)["top_scorer_sum"]
 
 # Create the records
 added_owners["record"] = [
@@ -83,8 +80,9 @@ top_scorer_final.rename(
 
 # Top 6 table
 top_six_teams = fantasy_data[["team_name", "week", "top6_win"]].drop_duplicates()
-t6_added_owns = top_six_teams.merge(owner_names, left_on="team_name", right_on="teams")
-t6_pivot = t6_added_owns[["owners", "top6_win", "week"]].pivot("owners", "week", "top6_win")
+t6_added_owns = summed_tops
+
+t6_pivot = top_six_teams.pivot("team_name", "week", "top6_win")
 t6_pivot = t6_pivot.loc[top_scorer_final.index]
 
 
@@ -120,14 +118,26 @@ st.markdown("----")
 
 ## Team selection
 
-with st.expander("Luck"):
+with st.expander("Matchup Luck"):
     liklihood_table = (
-        build_probability_distribution(fantasy_data)
+        ff_probability.build_probability_distribution(fantasy_data)
         .sort_index(ascending=False)
         .cumsum(axis=0)
         .sort_index(ascending=True)
     )
     format_dict = {col: "{:,.1%}".format for col in liklihood_table.columns}
+
+    st.markdown("# How lucky have your matchups been?")
+    st.markdown("We simulated 10,000 seasons with a random order of Head to Head matchups")
+    st.markdown(
+        "This table shows the cumulative probability that each team will have at least X wins thus far in the season"
+    )
+
+    st.table(
+        liklihood_table.style.bar(color="darkblue")
+        .format(format_dict)
+        .set_caption("Liklihood for having at least X wins so far")
+    )
 
 with st.expander("Teams"):
     teams = fantasy_data["team_name"].drop_duplicates().tolist()
