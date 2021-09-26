@@ -88,7 +88,7 @@ with st.expander("Margin of Victory/Loss + Waiver Points"):
                 x=alt.X("average_waiver_points", title="Avg. points added via waivers"),
                 tooltip=[
                     alt.Tooltip("team_name", title="Team Name"),
-                    alt.Tooltip("average_waiver_points", format=".2f", title="Avg. points added via waivers"),
+                    alt.Tooltip("average_waiver_points", format=".2f", title="Avg. points from waivers"),
                 ],
             )
         )
