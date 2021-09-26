@@ -1,3 +1,4 @@
+from logging import debug
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
@@ -7,9 +8,11 @@ from espn_api.football import League
 our_league = League(
     league_id=st.secrets["league_id"], year=2021, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
 )
+our_league.refresh()
 
 
 def box_score_to_csv(box_match, week, year, our_league):
+    our_league.refresh()
     box_match_1 = box_match
     name = ["tp1", "tp2", "tp3"]
     week_scores = our_league.box_scores(week)
@@ -92,13 +95,11 @@ def full_week_data(week, year):
 
 
 def weeks_since_start_season():
-    d1 = datetime(2021, 9, 9)
+    d1 = datetime(2021, 9, 7)
     d2 = datetime.now()
 
-    monday1 = d1 - timedelta(days=d1.weekday())
-    monday2 = d2 - timedelta(days=d2.weekday())
-    total_weeks = (monday2 - monday1).days // 7
-    return total_weeks
+    total_diff = d2 - d1
+    return total_diff.days // 7
 
 
 @st.experimental_memo(ttl=36000)

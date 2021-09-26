@@ -1,28 +1,19 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
 import altair as alt
 from espn_data.get_espn_data import *
 from espn_data import ff_probability
+from espn_data.build_tables import *
 
 st.set_page_config(
     layout="wide",
     page_title="Fantasy Football Dashboard",
 )
-
-
-# Top of page
 st.title("Purple Drank Fantasy Scoreboard")
-
-# Build columns
-
-# Year select
 
 # year_selection = st.selectbox("Select Season", options=[2021, 2020])
 year_selection = 2021
 st.markdown("----")
-
 st.header(f"{year_selection} Regular Season Summary")
 
 
@@ -30,7 +21,7 @@ st.header(f"{year_selection} Regular Season Summary")
 def read_fantasy_data(year):
     season_dict = {
         2020: pd.read_csv("fantasy/fantasy_data_2020.csv"),
-        2021: get_2021_season_data(),  # pd.read_csv("fantasy/fantasy_data_2021.csv"),
+        2021: pd.read_csv("fantasy/fantasy_data_2021.csv"),
     }
     return season_dict[year]
 
@@ -38,75 +29,14 @@ def read_fantasy_data(year):
 # Read in the data
 fantasy_data = read_fantasy_data(year_selection)
 
-# Top points per week
-top_scorers = fantasy_data.iloc[fantasy_data.reset_index().groupby(["week"])["points"].idxmax(), :]
-summed_tops = top_scorers.groupby("team_name").count()["week"]
-summed_tops = summed_tops.rename("top_scorer_sum")
-
 # Make a single table
 cols_remove = ["name", "tp_names", "tp_points"]
 fantasy_points = fantasy_data.drop(columns=cols_remove).drop_duplicates()
 
-# Scoreboard Table
-summary_table_agg = (
-    fantasy_points[["team_name", "points", "points_against", "h2h_win", "top6_win"]]
-    .groupby("team_name", group_keys=False)
-    .agg("sum")
-    .round(2)
-)
-
-total_wins = summary_table_agg.assign(total_wins=summary_table_agg["h2h_win"] + summary_table_agg["top6_win"]).assign(
-    total_losses=lambda x: weeks_since_start_season() * 2 - x["total_wins"]
-)
-
-# Add owners names
-added_owners = total_wins
-
-top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_index=True)["top_scorer_sum"]
-
-# Create the records
-added_owners["record"] = [
-    f"{i}-{j}" for i, j in zip(added_owners.total_wins.to_list(), added_owners.total_losses.to_list())
-]
-added_owners = added_owners.sort_values(["total_wins", "points"], ascending=False)
-sub_owners = added_owners[["record", "points"]]
-
-# Add the times top scorer
-top_scorer_final = sub_owners.merge(top_scorer_final, how="left", left_index=True, right_index=True).fillna(0)
-top_scorer_final["top_scorer_sum"] = top_scorer_final["top_scorer_sum"].astype("int")
-top_scorer_final.rename(
-    columns={"record": "Standing", "points": "Points For", "top_scorer_sum": "# Times Top Scorer"}, inplace=True
-)
-
-# Top 6 table
-top_six_teams = fantasy_data[["team_name", "week", "top6_win"]].drop_duplicates()
-t6_added_owns = summed_tops
-
-t6_pivot = top_six_teams.pivot("team_name", "week", "top6_win")
-t6_pivot = t6_pivot.loc[top_scorer_final.index]
+records, t6_pivot = create_top6_and_record_table(fantasy_data)
 
 
-# Style the table
-def highlight_true(s):
-    """
-    highlight the maximum in a Series yellow.
-    """
-    is_true = s == True
-    return [
-        "background-color: darkgreen; color: darkgreen" if v else "background-color: purple; color: purple"
-        for v in is_true
-    ]
-
-
-format_dict = {"Points For": "{:.5}"}
-# styled_wins = top_scorer_final.style(format_dict)
 col1, col2 = st.columns(2)
-
-records = (
-    top_scorer_final.style.bar(subset="Points For", color="darkblue")
-    # .highlight_min(axis=0, color="purple", subset=["points"])
-    .format(format_dict).set_caption("Records and Points")
-)
 
 with col1:
     st.table(records)
@@ -138,6 +68,30 @@ with st.expander("Matchup Luck"):
         .format(format_dict)
         .set_caption("Likelihood for having at least X wins so far")
     )
+with st.expander("Margin of Victory/Loss + Waiver Points"):
+    col1_m, col2_m = st.columns(2)
+    with col1_m:
+        st.markdown("## Average margin of loss or victory")
+        st.markdown("By how much did each team win or lose?")
+
+        margins_wavier_pts = calc_margins_waivers(fantasy_data, our_league)
+        st.altair_chart(avg_margin_chart(margins_wavier_pts))
+
+    with col2_m:
+        st.markdown("## Average points from waiver pickups")
+        st.markdown("By how much did each team benefit from their additions?")
+        st.altair_chart(
+            alt.Chart(margins_wavier_pts.fillna(0))
+            .mark_bar(filled=True, color="darkblue", xOffset=1)
+            .encode(
+                y=alt.Y("team_name", title="Team Name", sort="-x"),
+                x=alt.X("average_waiver_points", title="Avg. points added via waivers"),
+                tooltip=[
+                    alt.Tooltip("team_name", title="Team Name"),
+                    alt.Tooltip("average_waiver_points", format=".2f", title="Avg. points added via waivers"),
+                ],
+            )
+        )
 
 with st.expander("Teams"):
     teams = fantasy_data["team_name"].drop_duplicates().tolist()
