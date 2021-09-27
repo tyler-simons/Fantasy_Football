@@ -9,10 +9,14 @@ def highlight_true(s):
     """
     highlight the maximum in a Series yellow.
     """
-    is_true = s == True
+    is_true = s > s.mean()
     return [
-        "background-color: darkgreen; color: darkgreen" if v else "background-color: red; color: red" for v in is_true
+        "background-color: darkgreen; color: white" if v else "background-color: tomato; color: white" for v in is_true
     ]
+
+
+def format_2_dec(x):
+    return {col: "{:,.2}".format for col in x.columns}
 
 
 def create_top6_and_record_table(fantasy_data):
@@ -59,19 +63,15 @@ def create_top6_and_record_table(fantasy_data):
     )
 
     # Top 6 table
-    top_six_teams = fantasy_data[["team_name", "week", "top6_win"]].drop_duplicates()
-
-    t6_pivot = top_six_teams.pivot("team_name", "week", "top6_win")
-    t6_pivot = t6_pivot.loc[top_scorer_final.index]
-
-    format_dict = {"Points For": "{:.5}"}
-
-    records = (
-        top_scorer_final.style.bar(subset="Points For", color="darkblue")
-        # .highlight_min(axis=0, color="purple", subset=["points"])
-        .format(format_dict).set_caption("Records and Points")
+    t6_pivot = (
+        fantasy_points.pivot("team_name", "week", "points")
+        .loc[top_scorer_final.index]
+        .style.apply(highlight_true)
+        .set_caption("Top 6 Scoring by Week")
+        .format("{:.5}")
     )
-    return records, t6_pivot
+
+    return top_scorer_final, t6_pivot
 
 
 def player_df_from_line(lineup, first_matchup, week, home_team):
@@ -246,7 +246,7 @@ def avg_margin_chart(margins_wavier_pts):
     """Make a chart for the average margin of victory or loss"""
     loss_points = (
         alt.Chart(margins_wavier_pts)
-        .mark_point(filled=True, size=50, color="red")
+        .mark_point(filled=True, size=50, color="tomato")
         .encode(
             y=alt.Y("team_name", title="Team Name"),
             x=alt.X("avg_margin_of_loss", title="Avg. Margin of Victory/Loss"),
@@ -258,7 +258,7 @@ def avg_margin_chart(margins_wavier_pts):
     )
     win_points = (
         alt.Chart(margins_wavier_pts)
-        .mark_point(filled=True, size=50, color="green")
+        .mark_point(filled=True, size=50, color="lime")
         .encode(
             y=alt.Y("team_name", title=""),
             x=alt.X("avg_margin_of_victory", title=""),
