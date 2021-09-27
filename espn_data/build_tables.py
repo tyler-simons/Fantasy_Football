@@ -20,7 +20,7 @@ def highlight_true(s):
         # elif v == s.min():
         #     final_format.append("background-color: saddlebrown; color: white")
         else:
-            final_format.append("background-color: tomato; color: white")
+            final_format.append("background-color: tomato; color: black")
     return final_format
 
 
