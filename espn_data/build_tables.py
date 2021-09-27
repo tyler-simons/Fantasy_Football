@@ -50,11 +50,10 @@ def create_top6_and_record_table(fantasy_data):
 
     total_wins = summary_table_agg.assign(
         total_wins=summary_table_agg["h2h_win"] + summary_table_agg["top6_win"]
-    ).assign(total_losses=lambda x: weeks_since_start_season() * 2 - x["total_wins"])
+    ).assign(total_losses=lambda x: fantasy_points["week"].max() * 2 - x["total_wins"])
 
     # Add owners names
     added_owners = total_wins
-
     top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_index=True)["top_scorer_sum"]
 
     # Create the records
