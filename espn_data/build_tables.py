@@ -67,7 +67,6 @@ def create_top6_and_record_table(fantasy_data):
         fantasy_points.pivot("team_name", "week", "points")
         .loc[top_scorer_final.index]
         .style.apply(highlight_true)
-        .set_caption("Top 6 Scoring by Week")
         .format("{:.5}")
     )
 

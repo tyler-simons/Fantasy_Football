@@ -37,9 +37,7 @@ records, t6_pivot = build_tables.create_top6_and_record_table(fantasy_data)
 
 format_dict = {"Points For": "{:.5}"}
 
-records_final = (
-    records.style.bar(subset="Points For", color="darkblue").format(format_dict).set_caption("Records and Points")
-)
+records_final = records.style.bar(subset="Points For", color="darkblue").format(format_dict)
 
 col1, col2 = st.columns(2)
 with col1:
