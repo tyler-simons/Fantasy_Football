@@ -10,9 +10,16 @@ def highlight_true(s):
     highlight the maximum in a Series yellow.
     """
     is_true = s > s.mean()
-    return [
-        "background-color: darkgreen; color: white" if v else "background-color: tomato; color: white" for v in is_true
-    ]
+
+    final_format = []
+    for v in s:
+        if v == s.max():
+            final_format.append("background-color: gold; color: black")
+        elif v > s.mean():
+            final_format.append("background-color: darkgreen; color: white")
+        else:
+            final_format.append("background-color: tomato; color: white")
+    return final_format
 
 
 def format_2_dec(x):
