@@ -17,6 +17,8 @@ def highlight_true(s):
             final_format.append("background-color: gold; color: black")
         elif v > s.mean():
             final_format.append("background-color: darkgreen; color: white")
+        # elif v == s.min():
+        #     final_format.append("background-color: saddlebrown; color: white")
         else:
             final_format.append("background-color: tomato; color: white")
     return final_format
