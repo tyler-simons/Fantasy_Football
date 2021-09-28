@@ -95,7 +95,7 @@ def full_week_data(week, year):
 
 
 def weeks_since_start_season():
-    d1 = datetime(2021, 9, 7)
+    d1 = datetime(2021, 9, 6)
     d2 = datetime.now()
 
     total_diff = d2 - d1

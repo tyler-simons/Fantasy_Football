@@ -9,13 +9,13 @@ def highlight_true(s):
     """
     highlight the maximum in a Series yellow.
     """
-    is_true = s > s.mean()
 
     final_format = []
     for v in s:
+        print(v, s.mean(), v > s.median())
         if v == s.max():
             final_format.append("background-color: gold; color: black")
-        elif v > s.mean():
+        elif v > s.median():
             final_format.append("background-color: darkgreen; color: white")
         # elif v == s.min():
         #     final_format.append("background-color: saddlebrown; color: white")
@@ -69,7 +69,6 @@ def create_top6_and_record_table(fantasy_data):
     top_scorer_final.rename(
         columns={"record": "Standing", "points": "Points For", "top_scorer_sum": "# Times Top Scorer"}, inplace=True
     )
-
     # Top 6 table
     t6_pivot = (
         fantasy_points.pivot("team_name", "week", "points")
