@@ -6,13 +6,15 @@ import espn_data.ff_probability as ff_probability
 import espn_data.build_tables as build_tables
 import os
 from google.cloud import storage
+from google.oauth2 import service_account
+import json
 
 st.set_page_config(
     layout="wide",
     page_title="Fantasy Football Dashboard",
 )
 st.title("Purple Drank Fantasy Scoreboard")
-os.environ["GOOGLE_ACCOUNT_CREDENTIALS"] = st.secrets["GOOGLE_ACCOUNT_CREDENTIALS"]
+
 
 year_selection = st.selectbox("Select Season", options=[2019, 2020, 2021], index=2)
 year = year_selection
@@ -26,7 +28,13 @@ st.header(f"{year_selection} Regular Season Summary")
 
 @st.experimental_memo(max_entries=1)
 def get_2021_data():
-    client = storage.Client()
+    # Set GCP creds
+    gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
+    gcp_json_credentials_dict.update(
+        {"private_key": st.secrets["private_key"], "private_key_id": st.secrets["private_key_id"]}
+    )
+    credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
+    client = storage.Client(credentials=credentials)
     season_2021 = pd.read_csv("gs://fantasy-football-palo-alto-data/fantasy_data_2021.csv", encoding="utf-8")
     return season_2021
 
