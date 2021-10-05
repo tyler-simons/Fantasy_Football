@@ -191,7 +191,7 @@ def waiver_table(year):
     """Create a table of teams, transaction, and player_names"""
     import pickle
 
-    with open(f"./fantasy/waiver_data/wd_{year.year}.pickle", "rb") as handle:
+    with open(f"./fantasy/waiver_data/wd_{year}.pickle", "rb") as handle:
         b = pickle.load(handle)
     activities = b
     fa_adds = []
