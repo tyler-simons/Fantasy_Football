@@ -187,11 +187,11 @@ def build_full_player_df(our_league):
     return pd.concat(full_player_df)
 
 
-def waiver_table(year):
+def waiver_table(league):
     """Create a table of teams, transaction, and player_names"""
     import pickle
 
-    with open(f"./fantasy/waiver_data/wd_{year}.pickle", "rb") as handle:
+    with open(f"./fantasy/waiver_data/wd_{league.year}.pickle", "rb") as handle:
         b = pickle.load(handle)
     activities = b
     fa_adds = []
