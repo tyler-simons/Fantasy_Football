@@ -5,11 +5,6 @@ from datetime import datetime, timedelta
 import streamlit as st
 from espn_api.football import League
 
-our_league = League(
-    league_id=st.secrets["league_id"], year=2021, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
-)
-our_league.refresh()
-
 
 def box_score_to_csv(box_match, week, year, our_league):
     our_league.refresh()
@@ -84,12 +79,12 @@ def box_score_to_csv(box_match, week, year, our_league):
     return pd.DataFrame(team_dict)
 
 
-def full_week_data(week, year):
+def full_week_data(week, year, league):
     match_data = []
-    week_scores = our_league.box_scores(week)
+    week_scores = league.box_scores(week)
 
     for match in week_scores:
-        match_data.append(box_score_to_csv(match, week, year, our_league))
+        match_data.append(box_score_to_csv(match, week, year, league))
     combined_matches = pd.concat(match_data)
     return combined_matches
 
@@ -102,13 +97,21 @@ def weeks_since_start_season():
     return total_diff.days // 7
 
 
-@st.experimental_memo(ttl=36000)
-def get_2021_season_data():
-    total_weeks = weeks_since_start_season()
+# @st.experimental_memo(ttl=36000)
+def get_2021_season_data(year):
+    our_league = League(
+        league_id=st.secrets["league_id"], year=year, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
+    )
+
+    total_weeks = 13
 
     all_data = []
     for i in range(1, total_weeks + 1):
-        weekly_data = full_week_data(i, 2021)
-        all_data.append(weekly_data)
-    season_data = pd.concat(all_data)
+        weekly_data = full_week_data(i, year, our_league)
+        if weekly_data.points_against.sum() == 0:
+            break
+        else:
+            all_data.append(weekly_data)
+
+    season_data = pd.concat(all_data).query("points_against > 0")
     return season_data

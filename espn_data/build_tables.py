@@ -12,7 +12,6 @@ def highlight_true(s):
 
     final_format = []
     for v in s:
-        print(v, s.mean(), v > s.median())
         if v == s.max():
             final_format.append("background-color: gold; color: black")
         elif v > s.median():
@@ -188,10 +187,13 @@ def build_full_player_df(our_league):
     return pd.concat(full_player_df)
 
 
-@st.experimental_singleton
-def waiver_table(_our_league):
+def waiver_table(year):
     """Create a table of teams, transaction, and player_names"""
-    activities = _our_league.recent_activity(1000)
+    import pickle
+
+    with open(f"./fantasy/waiver_data/wd_{year.year}.pickle", "rb") as handle:
+        b = pickle.load(handle)
+    activities = b
     fa_adds = []
     for activity in activities:
         row = []
@@ -258,7 +260,7 @@ def avg_margin_chart(margins_wavier_pts):
             x=alt.X("avg_margin_of_loss", title="Avg. Margin of Victory/Loss"),
             tooltip=[
                 alt.Tooltip("team_name", title="Team Name"),
-                alt.Tooltip("avg_margin_of_loss", title="Avg. Margin of Loss"),
+                alt.Tooltip("avg_margin_of_loss", title="Avg. Margin of Loss", format=".2f"),
             ],
         )
     )
@@ -270,7 +272,7 @@ def avg_margin_chart(margins_wavier_pts):
             x=alt.X("avg_margin_of_victory", title=""),
             tooltip=[
                 alt.Tooltip("team_name", title="Team Name"),
-                alt.Tooltip("avg_margin_of_victory", title="Avg. Margin of Victory"),
+                alt.Tooltip("avg_margin_of_victory", title="Avg. Margin of Victory", format=".2f"),
             ],
         )
     )

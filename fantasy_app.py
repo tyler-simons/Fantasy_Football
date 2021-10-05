@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from espn_data.get_espn_data import our_league
+from espn_api.football import League
 import espn_data.ff_probability as ff_probability
 import espn_data.build_tables as build_tables
 
@@ -11,24 +11,28 @@ st.set_page_config(
 )
 st.title("Purple Drank Fantasy Scoreboard")
 
-# year_selection = st.selectbox("Select Season", options=[2021, 2020])
-year_selection = 2021
+year_selection = st.selectbox("Select Season", options=[2019, 2020, 2021], index=2)
+year = year_selection
+# year_selection = 2021
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
 
 
 # Read in data
-def read_fantasy_data(year):
-    season_dict = {
-        2020: pd.read_csv("fantasy/fantasy_data_2020.csv"),
-        2021: pd.read_csv("fantasy/fantasy_data_2021.csv"),
-    }
-    return season_dict[year]
+# def read_fantasy_data(year):
+season_dict = {
+    "2019": pd.read_csv("fantasy/fantasy_data_2019.csv"),
+    "2020": pd.read_csv("fantasy/fantasy_data_2020.csv"),
+    "2021": pd.read_csv("fantasy/fantasy_data_2021.csv"),
+}
+# return season_dict[year]
 
 
 # Read in the data
-fantasy_data = read_fantasy_data(year_selection)
-
+fantasy_data = season_dict[str(year_selection)]
+our_league = League(
+    league_id=st.secrets["league_id"], year=year_selection, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
+)
 # Make a single table
 cols_remove = ["name", "tp_names", "tp_points"]
 fantasy_points = fantasy_data.drop(columns=cols_remove).drop_duplicates()
@@ -39,13 +43,13 @@ format_dict = {"Points For": "{:.5}"}
 
 records_final = records.style.bar(subset="Points For", color="darkblue").format(format_dict)
 
-col1, col2 = st.columns(2)
-with col1:
-    st.markdown("<br>Records and Total Points", unsafe_allow_html=True)
-    st.table(records_final)
-with col2:
-    st.markdown("<br>Top 6 Scores per Week", unsafe_allow_html=True)
-    st.table(t6_pivot)
+
+st.markdown("<br>Records and Total Points", unsafe_allow_html=True)
+st.table(records_final)
+
+st.markdown("----")
+st.markdown("<br>Top 6 Scores per Week", unsafe_allow_html=True)
+st.table(t6_pivot)
 
 
 st.markdown("----")
@@ -68,19 +72,22 @@ with st.expander("Matchup Luck"):
     )
 
     # Select the liklihood wins
-    num_wins = records["Standing"].str[0].astype("int")
-
+    num_wins = records["Standing"].str.extract("(^\d{,2})").astype("int").reset_index()  # .reset_index()
+    num_wins.columns = ["team_name", "wins"]
+    # Issue with the column names in the num wins section
+    # print(num_wins)
+    num_wins = list(zip(num_wins.team_name, num_wins.wins))
     # Color a cell if it the right number of wins
     def style_specific_cell(x, wins):
 
         color = "color: red"
         df1 = pd.DataFrame("", index=x.index, columns=x.columns)
-        for row in wins.iteritems():
+
+        for row in wins:
             df1.loc[row[1], row[0]] = color
         return df1
 
     format_dict = {col: "{:,.1%}".format for col in liklihood_table.columns}
-
     formatted_liklihood = (
         liklihood_table.style.bar(color="darkblue")
         .format(format_dict)

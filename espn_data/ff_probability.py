@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 import numpy as np
+from toolz.itertoolz import random_sample
 
 
 def split(df, col):
@@ -12,7 +13,6 @@ def create_top6_dict(ffdata):
     top6_wins = ffdata[["team_name", "week", "top6_win"]].drop_duplicates()
     top6_wins.top6_win = top6_wins.top6_win.astype("int")
     top6_split = split(top6_wins, "team_name")
-
     top6_dict = {}
     for i in top6_split:
         top6_dict.update({i.team_name.unique()[0]: list(i.top6_win.values)})
@@ -39,7 +39,12 @@ def simulate_season(team_name, team_dict, top6_dict):
 
     all_wins = []
     for i in range(10000):
-        new_order = random.sample(opponents, games_count)
+        if games_count > len(opponents):
+            new_order = random.sample(opponents, len(opponents)) + random.sample(
+                opponents, games_count - len(opponents)
+            )
+        else:
+            new_order = random.sample(opponents, games_count)
         wins = 0
         for j, opp in enumerate(new_order):
             my_points = team_dict[team_name][j]
@@ -54,7 +59,6 @@ def simulate_season(team_name, team_dict, top6_dict):
 def build_probability_distribution(ffdata):
     """Simulate the seasons for all of the teams"""
     raw_scores = ffdata[["team_name", "week", "points"]].drop_duplicates()
-
     team_dict = create_team_dict(raw_scores)
     top6_dict = create_top6_dict(ffdata)
     all_team_names = sorted(list(set(raw_scores.team_name.values)))
