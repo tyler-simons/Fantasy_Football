@@ -42,7 +42,7 @@ def get_2021_data():
 season_dict = {
     "2019": pd.read_csv("fantasy/fantasy_data_2019.csv"),
     "2020": pd.read_csv("fantasy/fantasy_data_2020.csv"),
-    "2021": get_2021_data(),
+    "2021": pd.read_csv("fantasy/fantasy_data_2021.csv"),
 }
 # return season_dict[year]
 
