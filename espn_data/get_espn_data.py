@@ -108,10 +108,17 @@ def get_2021_season_data(year):
     all_data = []
     for i in range(1, total_weeks + 1):
         weekly_data = full_week_data(i, year, our_league)
-        if weekly_data.points_against.sum() == 0:
-            break
+        if len(all_data) > 0:
+            if (
+                weekly_data.points_against.sum() == 0
+                or weekly_data.points_against.sum() == all_data[-1].points_against.sum()
+            ):
+                break
+            else:
+                all_data.append(weekly_data)
+
         else:
             all_data.append(weekly_data)
 
-    season_data = pd.concat(all_data).query("points_against > 0")
+    season_data = pd.concat(all_data).query("points_against > 1")
     return season_data
