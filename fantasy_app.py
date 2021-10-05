@@ -4,26 +4,37 @@ import altair as alt
 from espn_api.football import League
 import espn_data.ff_probability as ff_probability
 import espn_data.build_tables as build_tables
+import os
+from google.cloud import storage
 
 st.set_page_config(
     layout="wide",
     page_title="Fantasy Football Dashboard",
 )
 st.title("Purple Drank Fantasy Scoreboard")
+os.environ["GOOGLE_ACCOUNT_CREDENTIALS"] = st.secrets["GOOGLE_ACCOUNT_CREDENTIALS"]
 
 year_selection = st.selectbox("Select Season", options=[2019, 2020, 2021], index=2)
 year = year_selection
-# year_selection = 2021
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
 
 
 # Read in data
-# def read_fantasy_data(year):
+# Get updated 2021 data
+
+
+@st.experimental_memo(max_entries=1)
+def get_2021_data():
+    client = storage.Client()
+    season_2021 = pd.read_csv("gs://fantasy-football-palo-alto-data/fantasy_data_2021.csv", encoding="utf-8")
+    return season_2021
+
+
 season_dict = {
     "2019": pd.read_csv("fantasy/fantasy_data_2019.csv"),
     "2020": pd.read_csv("fantasy/fantasy_data_2020.csv"),
-    "2021": pd.read_csv("fantasy/fantasy_data_2021.csv"),
+    "2021": get_2021_data(),
 }
 # return season_dict[year]
 

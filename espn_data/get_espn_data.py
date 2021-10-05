@@ -97,11 +97,9 @@ def weeks_since_start_season():
     return total_diff.days // 7
 
 
-# @st.experimental_memo(ttl=36000)
-def get_2021_season_data(year):
-    our_league = League(
-        league_id=st.secrets["league_id"], year=year, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
-    )
+# @st.experimental_memo(ttl=604800)
+def get_2021_season_data(year, league):
+    our_league = league
 
     total_weeks = 13
 

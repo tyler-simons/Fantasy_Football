@@ -7,3 +7,5 @@ fantasy/.Rproj.user/*
 __pycache__
 *.Rproj
 *.ods
+.env_vars.yaml
+*e3e.json
