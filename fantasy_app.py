@@ -8,6 +8,7 @@ import os
 from google.cloud import storage
 from google.oauth2 import service_account
 import json
+import io
 
 st.set_page_config(
     layout="wide",
@@ -27,7 +28,7 @@ st.header(f"{year_selection} Regular Season Summary")
 
 
 @st.experimental_memo(ttl=50000)
-def get_fantasy_data(year):
+def get_fantasy_data(year, bucket_name="fantasy-football-palo-alto-data"):
     # Set GCP creds
     gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
     gcp_json_credentials_dict.update(
@@ -35,8 +36,13 @@ def get_fantasy_data(year):
     )
     credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
     client = storage.Client(credentials=credentials)
-    season_data = pd.read_csv(f"gs://fantasy-football-palo-alto-data/fantasy_data_{year}.csv", encoding="utf-8")
-    return season_data
+
+    bucket = client.bucket(bucket_name)
+    source_file_name = f"fantasy_data_{year}.csv"
+    blob = bucket.blob(source_file_name)
+    data = blob.download_as_string()
+    df = pd.read_csv(io.BytesIO(data))
+    return df
 
 
 season_dict = {
