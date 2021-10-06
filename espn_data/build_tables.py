@@ -3,6 +3,11 @@ from .get_espn_data import weeks_since_start_season
 from datetime import datetime
 import streamlit as st
 import altair as alt
+import pickle
+import json
+from google.cloud import storage
+from google.oauth2 import service_account
+
 
 # Style the table
 def highlight_true(s):
@@ -187,13 +192,27 @@ def build_full_player_df(our_league):
     return pd.concat(full_player_df)
 
 
+@st.experimental_memo(ttl=50000)
+def get_waiver_data(year, bucket_name="fantasy-football-palo-alto-data"):
+    """Get the waiver dictionary from GCP"""
+    # Set GCP creds
+    gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
+    gcp_json_credentials_dict.update(
+        {"private_key": st.secrets["private_key"].replace("\\n", "\n"), "private_key_id": st.secrets["private_key_id"]}
+    )
+    credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
+    storage_client = storage.Client(credentials=credentials)
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(f"wd_{year}.pickle")
+    pickle_in = blob.download_as_string()
+    my_dictionary = pickle.loads(pickle_in)
+
+    return my_dictionary
+
+
 def waiver_table(league):
     """Create a table of teams, transaction, and player_names"""
-    import pickle
-
-    with open(f"./fantasy/waiver_data/wd_{league.year}.pickle", "rb") as handle:
-        b = pickle.load(handle)
-    activities = b
+    activities = get_waiver_data(league.year)
     fa_adds = []
     for activity in activities:
         row = []

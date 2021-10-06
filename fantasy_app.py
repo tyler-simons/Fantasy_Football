@@ -26,23 +26,23 @@ st.header(f"{year_selection} Regular Season Summary")
 # Get updated 2021 data
 
 
-@st.experimental_memo(max_entries=1)
-def get_2021_data():
+@st.experimental_memo(ttl=50000)
+def get_fantasy_data(year):
     # Set GCP creds
     gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
     gcp_json_credentials_dict.update(
-        {"private_key": st.secrets["private_key"], "private_key_id": st.secrets["private_key_id"]}
+        {"private_key": st.secrets["private_key"].replace("\\n", "\n"), "private_key_id": st.secrets["private_key_id"]}
     )
     credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
     client = storage.Client(credentials=credentials)
-    season_2021 = pd.read_csv("gs://fantasy-football-palo-alto-data/fantasy_data_2021.csv", encoding="utf-8")
-    return season_2021
+    season_data = pd.read_csv(f"gs://fantasy-football-palo-alto-data/fantasy_data_{year}.csv", encoding="utf-8")
+    return season_data
 
 
 season_dict = {
-    "2019": pd.read_csv("fantasy/fantasy_data_2019.csv"),
-    "2020": pd.read_csv("fantasy/fantasy_data_2020.csv"),
-    "2021": pd.read_csv("fantasy/fantasy_data_2021.csv"),
+    "2019": get_fantasy_data(2019),
+    "2020": get_fantasy_data(2020),
+    "2021": get_fantasy_data(2021),
 }
 # return season_dict[year]
 
