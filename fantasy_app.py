@@ -88,7 +88,6 @@ with st.expander("Matchup Luck"):
         .cumsum(axis=0)
         .sort_index(ascending=True)
     )
-
     st.markdown("# How lucky have your matchups been?")
     st.markdown("We simulated 10,000 seasons with a random order of Head to Head matchups")
     st.markdown(

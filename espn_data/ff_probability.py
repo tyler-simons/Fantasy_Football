@@ -2,6 +2,7 @@ import pandas as pd
 import random
 import numpy as np
 from toolz.itertoolz import random_sample
+import streamlit as st
 
 
 def split(df, col):
@@ -67,5 +68,5 @@ def build_probability_distribution(ffdata):
         total_wins = pd.Series(simulate_season(name, team_dict, top6_dict))
         total_wins = total_wins.rename(name)
         simulated_wins.append(total_wins.value_counts() / total_wins.value_counts().sum())
-
+    simulated_wins = [i.reindex(range(0, ffdata.week.max() * 2 + 1)) for i in simulated_wins]
     return pd.concat(simulated_wins, axis=1).fillna(0)
