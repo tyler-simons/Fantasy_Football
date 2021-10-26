@@ -52,4 +52,4 @@ def save_season_data(request):
             pickle.dump(ra, handle, protocol=pickle.HIGHEST_PROTOCOL)
         logging.info("Waiver data saved")
 
-        return
+        return "Finished"
