@@ -101,11 +101,12 @@ def weeks_since_start_season():
 def get_2021_season_data(year, league):
     our_league = league
 
-    total_weeks = 13
+    total_weeks = 14
 
     all_data = []
     for i in range(1, total_weeks + 1):
         weekly_data = full_week_data(i, year, our_league)
+        print(i)
         if len(all_data) > 0:
             if (
                 weekly_data.points_against.sum() == 0
