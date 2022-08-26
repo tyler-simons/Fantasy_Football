@@ -4,7 +4,7 @@ import altair as alt
 from espn_api.football import League
 import espn_data.ff_probability as ff_probability
 import espn_data.build_tables as build_tables
-import os
+import numpy as np
 from google.cloud import storage
 from google.oauth2 import service_account
 import json
@@ -14,10 +14,15 @@ st.set_page_config(
     layout="wide",
     page_title="Fantasy Football Dashboard",
 )
-st.title("Purple Drank Fantasy Scoreboard")
+st.title("PA Fantasy Scoreboard")
+st.markdown(
+    """Dashboard displaying our scores from the past few years of ESPN Fantasy Football. 
+        You can see the current scoreboard, top scores per week, how unlucky you've been, and a variety of other metrics. 
+        \n Each week, two points are awarded -- one for winning your matchup and one for placing Top 6 in points scored"""
+)
 
 
-year_selection = st.selectbox("Select Season", options=[2019, 2020, 2021], index=2)
+year_selection = st.selectbox("Start by selecting season", options=[2019, 2020, 2021], index=2)
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
@@ -155,24 +160,16 @@ with st.expander("Teams"):
 
     # Selected team
     selected_team = fantasy_points.query("team_name == @selected_team_name")
-    st.write(
-        f"Max points: \
-        {selected_team[selected_team.points == selected_team.points.max()]['points'].to_string(header=False, index=False)}\
-            in Week {selected_team[selected_team.points == selected_team.points.max()]['week'].to_string(header=False, index=False)}"
-    )
+    selected_team['points'] = selected_team['points'].round(2)
+    selected_team['points_against'] = selected_team['points_against'].round(2)
+    max_points, min_points = selected_team["points"].max(), selected_team["points"].min()
+    avg_points = selected_team["points"].mean()
 
-    # Min points
-    st.write(
-        f"Min points: \
-        {selected_team[selected_team.points == selected_team.points.min()]['points'].to_string(header=False, index=False)}\
-            in Week {selected_team[selected_team.points == selected_team.points.min()]['week'].to_string(header=False, index=False)}"
-    )
+    a, b, c = st.columns(3)
 
-    # SD points
-    st.write(
-        f"Standard deviation in points scored: \
-        {round(selected_team.points.std())}"
-    )
+    a.metric("Max points (up from average)", max_points, np.round(max_points - avg_points, 2))
+    b.metric("Min points (down from average)", min_points, np.round(avg_points - min_points, 2))
+    c.metric("Standard deviation of points", round(selected_team.points.std()))
 
     # Team Table
     st.markdown("## Team Table")
