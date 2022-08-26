@@ -119,12 +119,13 @@ with st.expander("Matchup Luck"):
         .set_caption("Likelihood for having at least X wins so far")
     )
     st.table(formatted_liklihood)
+
+
 with st.expander("Margin of Victory/Loss + Waiver Points"):
     col1_m, col2_m = st.columns(2)
     with col1_m:
         st.markdown("## Average margin of loss or victory")
         st.markdown("By how much did each team win or lose?")
-
         margins_wavier_pts = build_tables.calc_margins_waivers(fantasy_data, our_league)
         st.altair_chart(build_tables.avg_margin_chart(margins_wavier_pts))
 

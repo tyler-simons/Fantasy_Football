@@ -184,7 +184,7 @@ def build_matchup_player_dfs(matchup, week):
 def build_full_player_df(our_league):
     """Build a dataframe of teams and player information on each team"""
     full_player_df = []
-    for week in range(1, weeks_since_start_season() + 1):
+    for week in range(1, 16 + 1):
         matchups = our_league.box_scores(week)
         for match in matchups:
             full_player_df.append(build_matchup_player_dfs(match, week))
