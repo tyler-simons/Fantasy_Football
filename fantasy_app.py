@@ -169,7 +169,7 @@ with st.expander("Teams"):
     a, b, c = st.columns(3)
 
     a.metric("Max points (up from average)", max_points, np.round(max_points - avg_points, 2))
-    b.metric("Min points (down from average)", min_points, np.round(avg_points - min_points, 2))
+    b.metric("Min points (down from average)", min_points, np.round(min_points - avg_points, 2))
     c.metric("Standard deviation of points", round(selected_team.points.std()))
 
     # Team Table
