@@ -79,6 +79,7 @@ st.table(records_final)
 
 st.markdown("----")
 st.markdown("<br>Top 6 Scores per Week", unsafe_allow_html=True)
+st.markdown("Won matchup scores are in green with losses in red. Top weekly score is gold. ")
 st.table(t6_pivot)
 
 
@@ -160,8 +161,8 @@ with st.expander("Teams"):
 
     # Selected team
     selected_team = fantasy_points.query("team_name == @selected_team_name")
-    selected_team['points'] = selected_team['points'].round(2)
-    selected_team['points_against'] = selected_team['points_against'].round(2)
+    selected_team["points"] = selected_team["points"].round(2)
+    selected_team["points_against"] = selected_team["points_against"].round(2)
     max_points, min_points = selected_team["points"].max(), selected_team["points"].min()
     avg_points = selected_team["points"].mean()
 
