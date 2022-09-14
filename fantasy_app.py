@@ -80,6 +80,9 @@ format_dict = {"Points For": "{:.5}"}
 
 records_final = records.style.bar(subset="Points For", color="darkblue").format(format_dict)
 
+c1, c2 = st.columns([2,2])
+c1.subheader(f"{records_final.index[0]} is winning")
+c2.subheader(f"{records_final.index[-1]} is dead last")
 
 st.markdown("<br>Records and Total Points", unsafe_allow_html=True)
 st.table(records_final)
