@@ -1,3 +1,4 @@
+from ast import excepthandler
 import streamlit as st
 import pandas as pd
 import altair as alt
@@ -22,7 +23,7 @@ st.markdown(
 )
 
 
-year_selection = st.selectbox("Start by selecting season", options=[2019, 2020, 2021], index=2)
+year_selection = st.selectbox("Start by selecting season", options=[2019, 2020, 2021, 2022], index=3)
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
@@ -34,19 +35,25 @@ st.header(f"{year_selection} Regular Season Summary")
 
 @st.experimental_memo(ttl=50000)
 def get_fantasy_data(year, bucket_name="fantasy-football-palo-alto-data"):
-    # Set GCP creds
-    gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
-    gcp_json_credentials_dict.update(
-        {"private_key": st.secrets["private_key"].replace("\\n", "\n"), "private_key_id": st.secrets["private_key_id"]}
-    )
-    credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
-    client = storage.Client(credentials=credentials)
+    try:
+        # Set GCP creds
+        gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
+        gcp_json_credentials_dict.update(
+            {
+                "private_key": st.secrets["private_key"].replace("\\n", "\n"),
+                "private_key_id": st.secrets["private_key_id"],
+            }
+        )
+        credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
+        client = storage.Client(credentials=credentials)
 
-    bucket = client.bucket(bucket_name)
-    source_file_name = f"fantasy_data_{year}.csv"
-    blob = bucket.blob(source_file_name)
-    data = blob.download_as_string()
-    df = pd.read_csv(io.BytesIO(data))
+        bucket = client.bucket(bucket_name)
+        source_file_name = f"fantasy_data_{year}.csv"
+        blob = bucket.blob(source_file_name)
+        data = blob.download_as_string()
+        df = pd.read_csv(io.BytesIO(data))
+    except:
+        df = pd.read_csv(f"./fantasy/fantasy_data_{year}.csv")
     return df
 
 
@@ -54,6 +61,7 @@ season_dict = {
     "2019": get_fantasy_data(2019),
     "2020": get_fantasy_data(2020),
     "2021": get_fantasy_data(2021),
+    "2022": get_fantasy_data(2022),
 }
 # return season_dict[year]
 
@@ -66,7 +74,6 @@ our_league = League(
 # Make a single table
 cols_remove = ["name", "tp_names", "tp_points"]
 fantasy_points = fantasy_data.drop(columns=cols_remove).drop_duplicates()
-
 records, t6_pivot = build_tables.create_top6_and_record_table(fantasy_data)
 
 format_dict = {"Points For": "{:.5}"}
@@ -170,7 +177,8 @@ with st.expander("Teams"):
 
     a.metric("Max points (up from average)", max_points, np.round(max_points - avg_points, 2))
     b.metric("Min points (down from average)", min_points, np.round(min_points - avg_points, 2))
-    c.metric("Standard deviation of points", round(selected_team.points.std()))
+    if len(selected_team.points)>1:
+        c.metric("Standard deviation of points", round(selected_team.points.std()))
 
     # Team Table
     st.markdown("## Team Table")

@@ -9,3 +9,4 @@ __pycache__
 *.ods
 .env_vars.yaml
 *e3e.json
+venv/

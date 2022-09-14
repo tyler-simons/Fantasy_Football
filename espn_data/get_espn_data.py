@@ -90,7 +90,7 @@ def full_week_data(week, year, league):
 
 
 def weeks_since_start_season():
-    d1 = datetime(2021, 9, 6)
+    d1 = datetime(2022, 9, 6)
     d2 = datetime.now()
 
     total_diff = d2 - d1
@@ -98,7 +98,7 @@ def weeks_since_start_season():
 
 
 # @st.experimental_memo(ttl=604800)
-def get_2021_season_data(year, league):
+def get_season_data(year, league):
     our_league = league
 
     total_weeks = 14

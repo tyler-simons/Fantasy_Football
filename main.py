@@ -1,7 +1,7 @@
 from espn_api.football import League
 import pickle
 import streamlit as st
-from espn_data.get_espn_data import get_2021_season_data
+from espn_data.get_espn_data import get_season_data
 from google.cloud import storage
 import pandas as pd
 import gcsfs
@@ -15,7 +15,7 @@ import os
 def save_season_data(request):
     """Save the data for 2021 on GCP"""
 
-    for year in [2021]:
+    for year in [2022]:
 
         BUCKET_NAME = "fantasy-football-palo-alto-data"
         PROJECT_NAME = "fantasy-football-palo-alto"
@@ -30,7 +30,7 @@ def save_season_data(request):
         logging.info("League connected")
 
         # Download data
-        season_data_2021 = get_2021_season_data(year, our_league)
+        season_data_2021 = get_season_data(year, our_league)
         logging.info("Data downloaded")
 
         # Connect to the client
@@ -53,3 +53,4 @@ def save_season_data(request):
         logging.info("Waiver data saved")
 
     return "Finished"
+

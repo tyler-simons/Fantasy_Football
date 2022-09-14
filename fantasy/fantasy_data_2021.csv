@@ -1,217 +1,157 @@
-team_name,week,points,name,tp_names,tp_points,opponent,h2h_win,points_against,top6_win,year
-Tyler Simons,1,104.74,tp1,Tyreek Hill,32.6,Kyle Samos,True,103.84,True,2021
-Tyler Simons,1,104.74,tp2,Matthew Stafford,25.34,Kyle Samos,True,103.84,True,2021
-Tyler Simons,1,104.74,tp3,Mike Williams,18.2,Kyle Samos,True,103.84,True,2021
-Kyle Samos,1,103.84,tp1,Adam Thielen,25.7,Tyler Simons,False,104.74,True,2021
-Kyle Samos,1,103.84,tp2,Kirk Cousins,23.04,Tyler Simons,False,104.74,True,2021
-Kyle Samos,1,103.84,tp3,Jamaal Williams,21.0,Tyler Simons,False,104.74,True,2021
-Jon Samos,1,108.96,tp1,Jameis Winston,29.62,M S,True,100.78,True,2021
-Jon Samos,1,108.96,tp2,Tom Brady,28.16,M S,True,100.78,True,2021
-Jon Samos,1,108.96,tp3,Tyler Lockett,25.0,M S,True,100.78,True,2021
-M S,1,100.78,tp1,Patrick Mahomes,34.28,Jon Samos,False,108.96,False,2021
-M S,1,100.78,tp2,Christian McCaffrey,23.2,Jon Samos,False,108.96,False,2021
-M S,1,100.78,tp3,Ty'Son Williams,16.9,Jon Samos,False,108.96,False,2021
-Conor Kennedy,1,137.26,tp1,Kyler Murray,33.56,Michael Rundell,True,133.2,True,2021
-Conor Kennedy,1,137.26,tp2,T.J. Hockenson,21.7,Michael Rundell,True,133.2,True,2021
-Conor Kennedy,1,137.26,tp3,Nick Chubb,21.1,Michael Rundell,True,133.2,True,2021
-Michael Rundell,1,133.2,tp1,Amari Cooper,33.4,Conor Kennedy,False,137.26,True,2021
-Michael Rundell,1,133.2,tp2,Corey Davis,24.2,Conor Kennedy,False,137.26,True,2021
-Michael Rundell,1,133.2,tp3,Joe Mixon,24.0,Conor Kennedy,False,137.26,True,2021
-Chris Bisbee,1,75.94,tp1,Travis Kelce,22.6,James Pastrami,False,107.42,False,2021
-Chris Bisbee,1,75.94,tp2,CeeDee Lamb,20.9,James Pastrami,False,107.42,False,2021
-Chris Bisbee,1,75.94,tp3,Ja'Marr Chase,19.4,James Pastrami,False,107.42,False,2021
-James Pastrami,1,107.42,tp1,Rob Gronkowski,25.0,Chris Bisbee,True,75.94,True,2021
-James Pastrami,1,107.42,tp2,Antonio Brown,22.2,Chris Bisbee,True,75.94,True,2021
-James Pastrami,1,107.42,tp3,Dalvin Cook,17.4,Chris Bisbee,True,75.94,True,2021
-Laura Millar,1,76.3,tp1,Jalen Hurts,28.76,Jake Verhulp,False,83.72,False,2021
-Laura Millar,1,76.3,tp2,Darren Waller,22.5,Jake Verhulp,False,83.72,False,2021
-Laura Millar,1,76.3,tp3,Lamar Jackson,18.0,Jake Verhulp,False,83.72,False,2021
-Jake Verhulp,1,83.72,tp1,Trevor Lawrence,20.08,Laura Millar,True,76.3,False,2021
-Jake Verhulp,1,83.72,tp2,Steelers D/ST,17.1,Laura Millar,True,76.3,False,2021
-Jake Verhulp,1,83.72,tp3,Ryan Tannehill,14.18,Laura Millar,True,76.3,False,2021
-Patrick Rundell,1,100.06,tp1,Deebo Samuel,28.4,Raj Sreenivasan,True,86.32,False,2021
-Patrick Rundell,1,100.06,tp2,Russell Wilson,27.06,Raj Sreenivasan,True,86.32,False,2021
-Patrick Rundell,1,100.06,tp3,Cooper Kupp,21.3,Raj Sreenivasan,True,86.32,False,2021
-Raj Sreenivasan,1,86.32,tp1,Dak Prescott,29.42,Patrick Rundell,False,100.06,False,2021
-Raj Sreenivasan,1,86.32,tp2,Miles Sanders,15.3,Patrick Rundell,False,100.06,False,2021
-Raj Sreenivasan,1,86.32,tp3,Baker Mayfield,13.64,Patrick Rundell,False,100.06,False,2021
-Kyle Samos,2,90.26,tp1,Kirk Cousins,25.26,M S,False,118.42,False,2021
-Kyle Samos,2,90.26,tp2,Tony Pollard,22.5,M S,False,118.42,False,2021
-Kyle Samos,2,90.26,tp3,Ezekiel Elliott,16.7,M S,False,118.42,False,2021
-M S,2,118.42,tp1,Patrick Mahomes,25.02,Kyle Samos,True,90.26,True,2021
-M S,2,118.42,tp2,Christian McCaffrey,22.2,Kyle Samos,True,90.26,True,2021
-M S,2,118.42,tp3,Mike Evans,22.0,Kyle Samos,True,90.26,True,2021
-Michael Rundell,2,75.26,tp1,Josh Allen,16.66,Tyler Simons,False,127.52,False,2021
-Michael Rundell,2,75.26,tp2,Chris Carson,15.1,Tyler Simons,False,127.52,False,2021
-Michael Rundell,2,75.26,tp3,DeAndre Hopkins,13.4,Tyler Simons,False,127.52,False,2021
-Tyler Simons,2,127.52,tp1,Derrick Henry,45.7,Michael Rundell,True,75.26,True,2021
-Tyler Simons,2,127.52,tp2,Mike Williams,18.6,Michael Rundell,True,75.26,True,2021
-Tyler Simons,2,127.52,tp3,Matthew Stafford,17.22,Michael Rundell,True,75.26,True,2021
-James Pastrami,2,78.02,tp1,Aaron Rodgers,26.8,Jon Samos,False,121.34,False,2021
-James Pastrami,2,78.02,tp2,Marquise Brown,21.3,Jon Samos,False,121.34,False,2021
-James Pastrami,2,78.02,tp3,Rob Gronkowski,17.9,Jon Samos,False,121.34,False,2021
-Jon Samos,2,121.34,tp1,Tom Brady,29.64,James Pastrami,True,78.02,True,2021
-Jon Samos,2,121.34,tp2,Tyler Lockett,28.8,James Pastrami,True,78.02,True,2021
-Jon Samos,2,121.34,tp3,Michael Pittman Jr.,17.3,James Pastrami,True,78.02,True,2021
-Jake Verhulp,2,78.38,tp1,Ryan Tannehill,15.58,Conor Kennedy,False,111.0,False,2021
-Jake Verhulp,2,78.38,tp2,Justin Jefferson,15.5,Conor Kennedy,False,111.0,False,2021
-Jake Verhulp,2,78.38,tp3,Stefon Diggs,14.0,Conor Kennedy,False,111.0,False,2021
-Conor Kennedy,2,111.0,tp1,Kyler Murray,35.1,Jake Verhulp,True,78.38,True,2021
-Conor Kennedy,2,111.0,tp2,Rondale Moore,21.9,Jake Verhulp,True,78.38,True,2021
-Conor Kennedy,2,111.0,tp3,T.J. Hockenson,16.6,Jake Verhulp,True,78.38,True,2021
-Raj Sreenivasan,2,89.98,tp1,Terry McLaurin,23.2,Chris Bisbee,True,80.78,False,2021
-Raj Sreenivasan,2,89.98,tp2,Austin Ekeler,18.0,Chris Bisbee,True,80.78,False,2021
-Raj Sreenivasan,2,89.98,tp3,DJ Moore,17.9,Chris Bisbee,True,80.78,False,2021
-Chris Bisbee,2,80.78,tp1,Travis Kelce,21.4,Raj Sreenivasan,False,89.98,False,2021
-Chris Bisbee,2,80.78,tp2,Zack Moss,14.4,Raj Sreenivasan,False,89.98,False,2021
-Chris Bisbee,2,80.78,tp3,CeeDee Lamb,13.4,Raj Sreenivasan,False,89.98,False,2021
-Patrick Rundell,2,133.12,tp1,Cooper Kupp,33.3,Laura Millar,True,132.06,True,2021
-Patrick Rundell,2,133.12,tp2,Russell Wilson,24.32,Laura Millar,True,132.06,True,2021
-Patrick Rundell,2,133.12,tp3,Henry Ruggs III,21.0,Laura Millar,True,132.06,True,2021
-Laura Millar,2,132.06,tp1,Aaron Jones,38.5,Patrick Rundell,False,133.12,True,2021
-Laura Millar,2,132.06,tp2,Lamar Jackson,33.26,Patrick Rundell,False,133.12,True,2021
-Laura Millar,2,132.06,tp3,Jalen Hurts,21.8,Patrick Rundell,False,133.12,True,2021
-Michael Rundell,3,103.82,tp1,Josh Allen,38.22,Kyle Samos,False,113.12,True,2021
-Michael Rundell,3,103.82,tp2,Kareem Hunt,24.5,Kyle Samos,False,113.12,True,2021
-Michael Rundell,3,103.82,tp3,Saints D/ST,17.4,Kyle Samos,False,113.12,True,2021
-Kyle Samos,3,113.12,tp1,Kirk Cousins,26.12,Michael Rundell,True,103.82,True,2021
-Kyle Samos,3,113.12,tp2,Ezekiel Elliott,25.1,Michael Rundell,True,103.82,True,2021
-Kyle Samos,3,113.12,tp3,Keenan Allen,15.0,Michael Rundell,True,103.82,True,2021
-M S,3,98.7,tp1,Patrick Mahomes,22.9,James Pastrami,True,81.74,False,2021
-M S,3,98.7,tp2,Alexander Mattison,21.1,James Pastrami,True,81.74,False,2021
-M S,3,98.7,tp3,Mike Evans,15.6,James Pastrami,True,81.74,False,2021
-James Pastrami,3,81.74,tp1,Justin Herbert,30.84,M S,False,98.7,False,2021
-James Pastrami,3,81.74,tp2,Alvin Kamara,19.3,M S,False,98.7,False,2021
-James Pastrami,3,81.74,tp3,Aaron Rodgers,18.54,M S,False,98.7,False,2021
-Tyler Simons,3,116.32,tp1,Mike Williams,30.7,Jake Verhulp,True,105.44,True,2021
-Tyler Simons,3,116.32,tp2,Matthew Stafford,30.52,Jake Verhulp,True,105.44,True,2021
-Tyler Simons,3,116.32,tp3,DK Metcalf,20.7,Jake Verhulp,True,105.44,True,2021
-Jake Verhulp,3,105.44,tp1,Justin Jefferson,23.3,Tyler Simons,False,116.32,True,2021
-Jake Verhulp,3,105.44,tp2,Derek Carr,22.24,Tyler Simons,False,116.32,True,2021
-Jake Verhulp,3,105.44,tp3,Ryan Tannehill,21.48,Tyler Simons,False,116.32,True,2021
-Jon Samos,3,103.78,tp1,Tom Brady,30.68,Raj Sreenivasan,True,91.72,False,2021
-Jon Samos,3,103.78,tp2,Najee Harris,22.2,Raj Sreenivasan,True,91.72,False,2021
-Jon Samos,3,103.78,tp3,Tyler Higbee,12.5,Raj Sreenivasan,True,91.72,False,2021
-Raj Sreenivasan,3,91.72,tp1,Dak Prescott,20.12,Jon Samos,False,103.78,False,2021
-Raj Sreenivasan,3,91.72,tp2,Austin Ekeler,19.7,Jon Samos,False,103.78,False,2021
-Raj Sreenivasan,3,91.72,tp3,DJ Moore,17.5,Jon Samos,False,103.78,False,2021
-Conor Kennedy,3,90.04,tp1,Emmanuel Sanders,23.9,Patrick Rundell,False,111.52,False,2021
-Conor Kennedy,3,90.04,tp2,D'Andre Swift,20.2,Patrick Rundell,False,111.52,False,2021
-Conor Kennedy,3,90.04,tp3,Kyler Murray,19.54,Patrick Rundell,False,111.52,False,2021
-Patrick Rundell,3,111.52,tp1,Davante Adams,26.2,Conor Kennedy,True,90.04,True,2021
-Patrick Rundell,3,111.52,tp2,Cooper Kupp,26.1,Conor Kennedy,True,90.04,True,2021
-Patrick Rundell,3,111.52,tp3,James Robinson,22.4,Conor Kennedy,True,90.04,True,2021
-Chris Bisbee,3,108.44,tp1,Ja'Marr Chase,20.5,Laura Millar,True,79.28,True,2021
-Chris Bisbee,3,108.44,tp2,Saquon Barkley,18.4,Laura Millar,True,79.28,True,2021
-Chris Bisbee,3,108.44,tp3,Joe Burrow,17.58,Laura Millar,True,79.28,True,2021
-Laura Millar,3,79.28,tp1,Peyton Barber,22.7,Chris Bisbee,False,108.44,False,2021
-Laura Millar,3,79.28,tp2,Jalen Hurts,21.54,Chris Bisbee,False,108.44,False,2021
-Laura Millar,3,79.28,tp3,Lamar Jackson,19.28,Chris Bisbee,False,108.44,False,2021
-Kyle Samos,4,82.32,tp1,Ezekiel Elliott,21.3,James Pastrami,False,106.98,False,2021
-Kyle Samos,4,82.32,tp2,Jonathan Taylor,19.9,James Pastrami,False,106.98,False,2021
-Kyle Samos,4,82.32,tp3,Kirk Cousins,10.12,James Pastrami,False,106.98,False,2021
-James Pastrami,4,106.98,tp1,Aaron Rodgers,24.12,Kyle Samos,True,82.32,True,2021
-James Pastrami,4,106.98,tp2,Justin Herbert,21.28,Kyle Samos,True,82.32,True,2021
-James Pastrami,4,106.98,tp3,Diontae Johnson,19.7,Kyle Samos,True,82.32,True,2021
-Jake Verhulp,4,115.64,tp1,Cordarrelle Patterson,32.1,Michael Rundell,True,94.52,True,2021
-Jake Verhulp,4,115.64,tp2,James Conner,19.6,Michael Rundell,True,94.52,True,2021
-Jake Verhulp,4,115.64,tp3,Ryan Tannehill,18.82,Michael Rundell,True,94.52,True,2021
-Michael Rundell,4,94.52,tp1,Corey Davis,20.1,Jake Verhulp,False,115.64,False,2021
-Michael Rundell,4,94.52,tp2,Josh Allen,20.02,Jake Verhulp,False,115.64,False,2021
-Michael Rundell,4,94.52,tp3,Jared Cook,16.0,Jake Verhulp,False,115.64,False,2021
-Raj Sreenivasan,4,152.12,tp1,Austin Ekeler,29.0,M S,True,106.52,True,2021
-Raj Sreenivasan,4,152.12,tp2,DJ Moore,28.9,M S,True,106.52,True,2021
-Raj Sreenivasan,4,152.12,tp3,Terry McLaurin,28.3,M S,True,106.52,True,2021
-M S,4,106.52,tp1,Patrick Mahomes,31.72,Raj Sreenivasan,False,152.12,True,2021
-M S,4,106.52,tp2,Trey Lance,20.38,Raj Sreenivasan,False,152.12,True,2021
-M S,4,106.52,tp3,Dawson Knox,18.2,Raj Sreenivasan,False,152.12,True,2021
-Patrick Rundell,4,138.66,tp1,Deebo Samuel,32.7,Tyler Simons,True,134.9,True,2021
-Patrick Rundell,4,138.66,tp2,David Montgomery,23.6,Tyler Simons,True,134.9,True,2021
-Patrick Rundell,4,138.66,tp3,Russell Wilson,22.56,Tyler Simons,True,134.9,True,2021
-Tyler Simons,4,134.9,tp1,Tyreek Hill,43.1,Patrick Rundell,False,138.66,True,2021
-Tyler Simons,4,134.9,tp2,Derrick Henry,25.7,Patrick Rundell,False,138.66,True,2021
-Tyler Simons,4,134.9,tp3,Clyde Edwards-Helaire,19.4,Patrick Rundell,False,138.66,True,2021
-Laura Millar,4,84.64,tp1,Jalen Hurts,29.18,Jon Samos,True,79.66,False,2021
-Laura Millar,4,84.64,tp2,Randall Cobb,21.4,Jon Samos,True,79.66,False,2021
-Laura Millar,4,84.64,tp3,Lamar Jackson,20.44,Jon Samos,True,79.66,False,2021
-Jon Samos,4,79.66,tp1,Najee Harris,18.1,Laura Millar,False,84.64,False,2021
-Jon Samos,4,79.66,tp2,Darrell Henderson Jr.,14.1,Laura Millar,False,84.64,False,2021
-Jon Samos,4,79.66,tp3,Jakobi Meyers,12.8,Laura Millar,False,84.64,False,2021
-Chris Bisbee,4,93.18,tp1,Daniel Jones,28.78,Conor Kennedy,True,93.12,False,2021
-Chris Bisbee,4,93.18,tp2,Saquon Barkley,27.1,Conor Kennedy,True,93.12,False,2021
-Chris Bisbee,4,93.18,tp3,Joe Burrow,23.32,Conor Kennedy,True,93.12,False,2021
-Conor Kennedy,4,93.12,tp1,Kyler Murray,22.62,Chris Bisbee,False,93.18,False,2021
-Conor Kennedy,4,93.12,tp2,DeVonta Smith,16.7,Chris Bisbee,False,93.18,False,2021
-Conor Kennedy,4,93.12,tp3,DK Metcalf,14.5,Chris Bisbee,False,93.18,False,2021
-Jake Verhulp,5,87.04,tp1,Antonio Gibson,20.2,Kyle Samos,False,128.8,False,2021
-Jake Verhulp,5,87.04,tp2,Justin Jefferson,16.9,Kyle Samos,False,128.8,False,2021
-Jake Verhulp,5,87.04,tp3,Hunter Henry,16.5,Kyle Samos,False,128.8,False,2021
-Kyle Samos,5,128.8,tp1,Mark Andrews,37.2,Jake Verhulp,True,87.04,True,2021
-Kyle Samos,5,128.8,tp2,Jonathan Taylor,31.4,Jake Verhulp,True,87.04,True,2021
-Kyle Samos,5,128.8,tp3,Ezekiel Elliott,25.2,Jake Verhulp,True,87.04,True,2021
-James Pastrami,5,174.62,tp1,Justin Herbert,43.82,Raj Sreenivasan,True,88.28,True,2021
-James Pastrami,5,174.62,tp2,Marquise Brown,30.0,Raj Sreenivasan,True,88.28,True,2021
-James Pastrami,5,174.62,tp3,Antonio Brown,28.9,Raj Sreenivasan,True,88.28,True,2021
-Raj Sreenivasan,5,88.28,tp1,Austin Ekeler,30.4,James Pastrami,False,174.62,False,2021
-Raj Sreenivasan,5,88.28,tp2,Dak Prescott,21.68,James Pastrami,False,174.62,False,2021
-Raj Sreenivasan,5,88.28,tp3,Cowboys D/ST,9.0,James Pastrami,False,174.62,False,2021
-Michael Rundell,5,117.5,tp1,Josh Allen,37.5,Patrick Rundell,False,118.68,False,2021
-Michael Rundell,5,117.5,tp2,Kareem Hunt,23.4,Patrick Rundell,False,118.68,False,2021
-Michael Rundell,5,117.5,tp3,DeAndre Hopkins,17.7,Patrick Rundell,False,118.68,False,2021
-Patrick Rundell,5,118.68,tp1,Davante Adams,34.1,Michael Rundell,True,117.5,True,2021
-Patrick Rundell,5,118.68,tp2,James Robinson,22.2,Michael Rundell,True,117.5,True,2021
-Patrick Rundell,5,118.68,tp3,Trevor Lawrence,21.72,Michael Rundell,True,117.5,True,2021
-M S,5,138.28,tp1,Mike Evans,27.3,Laura Millar,True,125.48,True,2021
-M S,5,138.28,tp2,Alexander Mattison,23.8,Laura Millar,True,125.48,True,2021
-M S,5,138.28,tp3,Dawson Knox,20.2,Laura Millar,True,125.48,True,2021
-Laura Millar,5,125.48,tp1,Lamar Jackson,43.88,M S,False,138.28,True,2021
-Laura Millar,5,125.48,tp2,Jalen Hurts,22.92,M S,False,138.28,True,2021
-Laura Millar,5,125.48,tp3,Chase Claypool,22.5,M S,False,138.28,True,2021
-Tyler Simons,5,113.4,tp1,Mike Williams,33.5,Chris Bisbee,True,83.22,False,2021
-Tyler Simons,5,113.4,tp2,Derrick Henry,32.0,Chris Bisbee,True,83.22,False,2021
-Tyler Simons,5,113.4,tp3,Matthew Stafford,17.5,Chris Bisbee,True,83.22,False,2021
-Chris Bisbee,5,83.22,tp1,Ja'Marr Chase,25.9,Tyler Simons,False,113.4,False,2021
-Chris Bisbee,5,83.22,tp2,Joe Burrow,18.34,Tyler Simons,False,113.4,False,2021
-Chris Bisbee,5,83.22,tp3,CeeDee Lamb,16.8,Tyler Simons,False,113.4,False,2021
-Jon Samos,5,111.14,tp1,Tom Brady,39.74,Conor Kennedy,False,140.86,False,2021
-Jon Samos,5,111.14,tp2,Myles Gaskin,26.9,Conor Kennedy,False,140.86,False,2021
-Jon Samos,5,111.14,tp3,Najee Harris,22.2,Conor Kennedy,False,140.86,False,2021
-Conor Kennedy,5,140.86,tp1,Nick Chubb,24.5,Jon Samos,True,111.14,True,2021
-Conor Kennedy,5,140.86,tp2,DK Metcalf,24.3,Jon Samos,True,111.14,True,2021
-Conor Kennedy,5,140.86,tp3,Kyle Pitts,23.4,Jon Samos,True,111.14,True,2021
-Kyle Samos,6,113.88,tp1,Kirk Cousins,29.52,Raj Sreenivasan,True,89.6,True,2021
-Kyle Samos,6,113.88,tp2,Jonathan Taylor,29.3,Raj Sreenivasan,True,89.6,True,2021
-Kyle Samos,6,113.88,tp3,Adam Thielen,25.3,Raj Sreenivasan,True,89.6,True,2021
-Raj Sreenivasan,6,89.6,tp1,Dak Prescott,28.8,Kyle Samos,False,113.88,False,2021
-Raj Sreenivasan,6,89.6,tp2,Ricky Seals-Jones,13.8,Kyle Samos,False,113.88,False,2021
-Raj Sreenivasan,6,89.6,tp3,Cowboys D/ST,12.4,Kyle Samos,False,113.88,False,2021
-Patrick Rundell,6,121.76,tp1,Cooper Kupp,30.5,Jake Verhulp,True,80.32,True,2021
-Patrick Rundell,6,121.76,tp2,Noah Fant,20.2,Jake Verhulp,True,80.32,True,2021
-Patrick Rundell,6,121.76,tp3,James Robinson,17.6,Jake Verhulp,True,80.32,True,2021
-Jake Verhulp,6,80.32,tp1,Stefon Diggs,19.4,Patrick Rundell,False,121.76,False,2021
-Jake Verhulp,6,80.32,tp2,Carson Wentz,17.02,Patrick Rundell,False,121.76,False,2021
-Jake Verhulp,6,80.32,tp3,Darnell Mooney,13.0,Patrick Rundell,False,121.76,False,2021
-Laura Millar,6,88.98,tp1,Jalen Hurts,25.0,James Pastrami,False,104.2,False,2021
-Laura Millar,6,88.98,tp2,Courtland Sutton,19.4,James Pastrami,False,104.2,False,2021
-Laura Millar,6,88.98,tp3,Aaron Jones,19.0,James Pastrami,False,104.2,False,2021
-James Pastrami,6,104.2,tp1,Aaron Rodgers,23.7,Laura Millar,True,88.98,False,2021
-James Pastrami,6,104.2,tp2,Dalvin Cook,22.3,Laura Millar,True,88.98,False,2021
-James Pastrami,6,104.2,tp3,Kenyan Drake,20.3,Laura Millar,True,88.98,False,2021
-Chris Bisbee,6,119.44,tp1,CeeDee Lamb,32.6,Michael Rundell,True,113.32,True,2021
-Chris Bisbee,6,119.44,tp2,Joe Burrow,22.84,Michael Rundell,True,113.32,True,2021
-Chris Bisbee,6,119.44,tp3,Travis Kelce,13.9,Michael Rundell,True,113.32,True,2021
-Michael Rundell,6,113.32,tp1,Josh Allen,29.72,Chris Bisbee,False,119.44,True,2021
-Michael Rundell,6,113.32,tp2,Joe Mixon,23.8,Chris Bisbee,False,119.44,True,2021
-Michael Rundell,6,113.32,tp3,DeAndre Hopkins,19.0,Chris Bisbee,False,119.44,True,2021
-Conor Kennedy,6,105.36,tp1,Leonard Fournette,27.7,M S,True,75.58,True,2021
-Conor Kennedy,6,105.36,tp2,Kyler Murray,25.76,M S,True,75.58,True,2021
-Conor Kennedy,6,105.36,tp3,Tua Tagovailoa,22.36,M S,True,75.58,True,2021
-M S,6,75.58,tp1,Patrick Mahomes,23.98,Conor Kennedy,False,105.36,False,2021
-M S,6,75.58,tp2,J.D. McKissic,15.0,Conor Kennedy,False,105.36,False,2021
-M S,6,75.58,tp3,Chuba Hubbard,13.0,Conor Kennedy,False,105.36,False,2021
-Jon Samos,6,85.68,tp1,Darrell Henderson Jr.,23.7,Tyler Simons,False,128.84,False,2021
-Jon Samos,6,85.68,tp2,Najee Harris,21.7,Tyler Simons,False,128.84,False,2021
-Jon Samos,6,85.68,tp3,Tom Brady,17.98,Tyler Simons,False,128.84,False,2021
-Tyler Simons,6,128.84,tp1,Derrick Henry,35.6,Jon Samos,True,85.68,True,2021
-Tyler Simons,6,128.84,tp2,Matthew Stafford,25.24,Jon Samos,True,85.68,True,2021
-Tyler Simons,6,128.84,tp3,Darrel Williams,22.4,Jon Samos,True,85.68,True,2021
+team_name,week,points,opponent,h2h_win,points_against,top6_win,year
+Tyler Simons,1,104.74,Kyle Samos,True,103.84,True,2021
+Kyle Samos,1,103.84,Tyler Simons,False,104.74,True,2021
+Jon Samos,1,108.96,Michael Sandor,True,100.78,True,2021
+Michael Sandor,1,100.78,Jon Samos,False,108.96,False,2021
+Conor Kennedy,1,137.26,Michael Rundell,True,133.2,True,2021
+Michael Rundell,1,133.2,Conor Kennedy,False,137.26,True,2021
+Chris Bisbee,1,75.94,James Pastrami,False,107.42,False,2021
+James Pastrami,1,107.42,Chris Bisbee,True,75.94,True,2021
+Laura Millar,1,76.3,Jake Verhulp,False,83.72,False,2021
+Jake Verhulp,1,83.72,Laura Millar,True,76.3,False,2021
+Patrick Rundell,1,100.06,Raj Sreenivasan,True,86.32,False,2021
+Raj Sreenivasan,1,86.32,Patrick Rundell,False,100.06,False,2021
+Kyle Samos,2,90.26,Michael Sandor,False,118.42,False,2021
+Michael Sandor,2,118.42,Kyle Samos,True,90.26,True,2021
+Michael Rundell,2,75.26,Tyler Simons,False,127.52,False,2021
+Tyler Simons,2,127.52,Michael Rundell,True,75.26,True,2021
+James Pastrami,2,78.02,Jon Samos,False,121.34,False,2021
+Jon Samos,2,121.34,James Pastrami,True,78.02,True,2021
+Jake Verhulp,2,78.38,Conor Kennedy,False,111.0,False,2021
+Conor Kennedy,2,111.0,Jake Verhulp,True,78.38,True,2021
+Raj Sreenivasan,2,89.98,Chris Bisbee,True,80.78,False,2021
+Chris Bisbee,2,80.78,Raj Sreenivasan,False,89.98,False,2021
+Patrick Rundell,2,133.12,Laura Millar,True,132.06,True,2021
+Laura Millar,2,132.06,Patrick Rundell,False,133.12,True,2021
+Michael Rundell,3,103.82,Kyle Samos,False,113.12,True,2021
+Kyle Samos,3,113.12,Michael Rundell,True,103.82,True,2021
+Michael Sandor,3,98.7,James Pastrami,True,81.74,False,2021
+James Pastrami,3,81.74,Michael Sandor,False,98.7,False,2021
+Tyler Simons,3,116.32,Jake Verhulp,True,105.44,True,2021
+Jake Verhulp,3,105.44,Tyler Simons,False,116.32,True,2021
+Jon Samos,3,103.78,Raj Sreenivasan,True,91.72,False,2021
+Raj Sreenivasan,3,91.72,Jon Samos,False,103.78,False,2021
+Conor Kennedy,3,90.04,Patrick Rundell,False,111.52,False,2021
+Patrick Rundell,3,111.52,Conor Kennedy,True,90.04,True,2021
+Chris Bisbee,3,108.44,Laura Millar,True,79.28,True,2021
+Laura Millar,3,79.28,Chris Bisbee,False,108.44,False,2021
+Kyle Samos,4,82.32,James Pastrami,False,106.98,False,2021
+James Pastrami,4,106.98,Kyle Samos,True,82.32,True,2021
+Jake Verhulp,4,115.64,Michael Rundell,True,94.52,True,2021
+Michael Rundell,4,94.52,Jake Verhulp,False,115.64,False,2021
+Raj Sreenivasan,4,152.12,Michael Sandor,True,106.52,True,2021
+Michael Sandor,4,106.52,Raj Sreenivasan,False,152.12,True,2021
+Patrick Rundell,4,138.66,Tyler Simons,True,134.9,True,2021
+Tyler Simons,4,134.9,Patrick Rundell,False,138.66,True,2021
+Laura Millar,4,84.64,Jon Samos,True,79.66,False,2021
+Jon Samos,4,79.66,Laura Millar,False,84.64,False,2021
+Chris Bisbee,4,93.18,Conor Kennedy,True,93.12,False,2021
+Conor Kennedy,4,93.12,Chris Bisbee,False,93.18,False,2021
+Jake Verhulp,5,87.04,Kyle Samos,False,128.8,False,2021
+Kyle Samos,5,128.8,Jake Verhulp,True,87.04,True,2021
+James Pastrami,5,174.62,Raj Sreenivasan,True,88.28,True,2021
+Raj Sreenivasan,5,88.28,James Pastrami,False,174.62,False,2021
+Michael Rundell,5,117.5,Patrick Rundell,False,118.68,False,2021
+Patrick Rundell,5,118.68,Michael Rundell,True,117.5,True,2021
+Michael Sandor,5,138.28,Laura Millar,True,125.48,True,2021
+Laura Millar,5,125.48,Michael Sandor,False,138.28,True,2021
+Tyler Simons,5,113.4,Chris Bisbee,True,83.22,False,2021
+Chris Bisbee,5,83.22,Tyler Simons,False,113.4,False,2021
+Jon Samos,5,111.14,Conor Kennedy,False,140.86,False,2021
+Conor Kennedy,5,140.86,Jon Samos,True,111.14,True,2021
+Kyle Samos,6,113.88,Raj Sreenivasan,True,89.6,True,2021
+Raj Sreenivasan,6,89.6,Kyle Samos,False,113.88,False,2021
+Patrick Rundell,6,121.76,Jake Verhulp,True,80.32,True,2021
+Jake Verhulp,6,80.32,Patrick Rundell,False,121.76,False,2021
+Laura Millar,6,88.98,James Pastrami,False,104.2,False,2021
+James Pastrami,6,104.2,Laura Millar,True,88.98,False,2021
+Chris Bisbee,6,119.44,Michael Rundell,True,113.32,True,2021
+Michael Rundell,6,113.32,Chris Bisbee,False,119.44,True,2021
+Conor Kennedy,6,105.36,Michael Sandor,True,75.58,True,2021
+Michael Sandor,6,75.58,Conor Kennedy,False,105.36,False,2021
+Jon Samos,6,85.68,Tyler Simons,False,128.84,False,2021
+Tyler Simons,6,128.84,Jon Samos,True,85.68,True,2021
+Patrick Rundell,7,133.98,Kyle Samos,True,70.52,True,2021
+Kyle Samos,7,70.52,Patrick Rundell,False,133.98,False,2021
+Raj Sreenivasan,7,86.42,Laura Millar,True,75.28,True,2021
+Laura Millar,7,75.28,Raj Sreenivasan,False,86.42,False,2021
+Jake Verhulp,7,83.84,Chris Bisbee,True,83.44,False,2021
+Chris Bisbee,7,83.44,Jake Verhulp,False,83.84,False,2021
+James Pastrami,7,104.26,Conor Kennedy,False,161.44,True,2021
+Conor Kennedy,7,161.44,James Pastrami,True,104.26,True,2021
+Michael Rundell,7,72.06,Jon Samos,False,96.94,False,2021
+Jon Samos,7,96.94,Michael Rundell,True,72.06,True,2021
+Michael Sandor,7,84.24,Tyler Simons,False,90.36,False,2021
+Tyler Simons,7,90.36,Michael Sandor,True,84.24,True,2021
+Kyle Samos,8,95.06,Laura Millar,False,96.02,True,2021
+Laura Millar,8,96.02,Kyle Samos,True,95.06,True,2021
+Chris Bisbee,8,76.86,Patrick Rundell,False,98.04,False,2021
+Patrick Rundell,8,98.04,Chris Bisbee,True,76.86,True,2021
+Conor Kennedy,8,92.36,Raj Sreenivasan,True,80.62,False,2021
+Raj Sreenivasan,8,80.62,Conor Kennedy,False,92.36,False,2021
+Jon Samos,8,162.3,Jake Verhulp,True,56.64,True,2021
+Jake Verhulp,8,56.64,Jon Samos,False,162.3,False,2021
+Tyler Simons,8,87.56,James Pastrami,True,66.32,False,2021
+James Pastrami,8,66.32,Tyler Simons,False,87.56,False,2021
+Michael Sandor,8,102.64,Michael Rundell,False,115.86,True,2021
+Michael Rundell,8,115.86,Michael Sandor,True,102.64,True,2021
+Chris Bisbee,9,72.48,Kyle Samos,False,117.28,False,2021
+Kyle Samos,9,117.28,Chris Bisbee,True,72.48,True,2021
+Laura Millar,9,83.54,Conor Kennedy,False,88.6,False,2021
+Conor Kennedy,9,88.6,Laura Millar,True,83.54,True,2021
+Patrick Rundell,9,85.5,Jon Samos,False,88.04,False,2021
+Jon Samos,9,88.04,Patrick Rundell,True,85.5,True,2021
+Raj Sreenivasan,9,70.48,Tyler Simons,True,48.16,False,2021
+Tyler Simons,9,48.16,Raj Sreenivasan,False,70.48,False,2021
+Jake Verhulp,9,122.22,Michael Sandor,True,79.34,True,2021
+Michael Sandor,9,79.34,Jake Verhulp,False,122.22,False,2021
+James Pastrami,9,112.74,Michael Rundell,True,92.76,True,2021
+Michael Rundell,9,92.76,James Pastrami,False,112.74,True,2021
+Kyle Samos,10,110.32,Conor Kennedy,True,70.18,True,2021
+Conor Kennedy,10,70.18,Kyle Samos,False,110.32,False,2021
+Jon Samos,10,66.7,Chris Bisbee,False,95.68,False,2021
+Chris Bisbee,10,95.68,Jon Samos,True,66.7,True,2021
+Tyler Simons,10,112.42,Laura Millar,True,51.02,True,2021
+Laura Millar,10,51.02,Tyler Simons,False,112.42,False,2021
+Michael Sandor,10,126.74,Patrick Rundell,True,95.74,True,2021
+Patrick Rundell,10,95.74,Michael Sandor,False,126.74,True,2021
+Michael Rundell,10,57.24,Raj Sreenivasan,False,84.64,False,2021
+Raj Sreenivasan,10,84.64,Michael Rundell,True,57.24,False,2021
+James Pastrami,10,80.8,Jake Verhulp,False,100.8,False,2021
+Jake Verhulp,10,100.8,James Pastrami,True,80.8,True,2021
+Jon Samos,11,86.68,Kyle Samos,False,142.44,False,2021
+Kyle Samos,11,142.44,Jon Samos,True,86.68,True,2021
+Conor Kennedy,11,99.82,Tyler Simons,False,100.36,True,2021
+Tyler Simons,11,100.36,Conor Kennedy,True,99.82,True,2021
+Chris Bisbee,11,84.82,Michael Sandor,True,78.8,False,2021
+Michael Sandor,11,78.8,Chris Bisbee,False,84.82,False,2021
+Laura Millar,11,87.48,Michael Rundell,True,74.36,False,2021
+Michael Rundell,11,74.36,Laura Millar,False,87.48,False,2021
+Patrick Rundell,11,90.08,James Pastrami,False,115.48,False,2021
+James Pastrami,11,115.48,Patrick Rundell,True,90.08,True,2021
+Raj Sreenivasan,11,101.64,Jake Verhulp,False,113.42,True,2021
+Jake Verhulp,11,113.42,Raj Sreenivasan,True,101.64,True,2021
+Kyle Samos,12,124.22,Tyler Simons,True,74.18,True,2021
+Tyler Simons,12,74.18,Kyle Samos,False,124.22,False,2021
+Michael Sandor,12,51.42,Jon Samos,False,69.24,False,2021
+Jon Samos,12,69.24,Michael Sandor,True,51.42,False,2021
+Michael Rundell,12,106.6,Conor Kennedy,True,56.78,True,2021
+Conor Kennedy,12,56.78,Michael Rundell,False,106.6,False,2021
+James Pastrami,12,136.82,Chris Bisbee,True,66.5,True,2021
+Chris Bisbee,12,66.5,James Pastrami,False,136.82,False,2021
+Jake Verhulp,12,112.78,Laura Millar,True,68.3,True,2021
+Laura Millar,12,68.3,Jake Verhulp,False,112.78,False,2021
+Raj Sreenivasan,12,101.5,Patrick Rundell,True,95.2,True,2021
+Patrick Rundell,12,95.2,Raj Sreenivasan,False,101.5,True,2021
+Michael Sandor,13,107.66,Kyle Samos,True,104.9,True,2021
+Kyle Samos,13,104.9,Michael Sandor,False,107.66,True,2021
+Tyler Simons,13,93.4,Michael Rundell,True,84.4,True,2021
+Michael Rundell,13,84.4,Tyler Simons,False,93.4,False,2021
+Jon Samos,13,92.66,James Pastrami,False,137.08,False,2021
+James Pastrami,13,137.08,Jon Samos,True,92.66,True,2021
+Conor Kennedy,13,125.52,Jake Verhulp,True,105.0,True,2021
+Jake Verhulp,13,105.0,Conor Kennedy,False,125.52,True,2021
+Chris Bisbee,13,64.6,Raj Sreenivasan,False,64.82,False,2021
+Raj Sreenivasan,13,64.82,Chris Bisbee,True,64.6,False,2021
+Laura Millar,13,87.92,Patrick Rundell,False,90.26,False,2021
+Patrick Rundell,13,90.26,Laura Millar,True,87.92,False,2021

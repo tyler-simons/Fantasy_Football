@@ -1,0 +1,37 @@
+team_name,week,points,name,tp_names,tp_points,opponent,h2h_win,points_against,top6_win,year
+Tyler Simons,1,86.26,tp1,Travis Kelce,23.1,Kyle Samos,True,67.52,False,2022
+Tyler Simons,1,86.26,tp2,Dontrell Hilliard,20.4,Kyle Samos,True,67.52,False,2022
+Tyler Simons,1,86.26,tp3,Dolphins D/ST,20.0,Kyle Samos,True,67.52,False,2022
+Kyle Samos,1,67.52,tp1,Kyler Murray,20.62,Tyler Simons,False,86.26,False,2022
+Kyle Samos,1,67.52,tp2,Bills D/ST,18.0,Tyler Simons,False,86.26,False,2022
+Kyle Samos,1,67.52,tp3,Christian McCaffrey,13.7,Tyler Simons,False,86.26,False,2022
+Jon Samos,1,98.98,tp1,A.J. Brown,21.5,Michael Sandor,True,93.92,True,2022
+Jon Samos,1,98.98,tp2,Clyde Edwards-Helaire,20.9,Michael Sandor,True,93.92,True,2022
+Jon Samos,1,98.98,tp3,Kirk Cousins,19.08,Michael Sandor,True,93.92,True,2022
+Michael Sandor,1,93.92,tp1,Cordarrelle Patterson,22.1,Jon Samos,False,98.98,False,2022
+Michael Sandor,1,93.92,tp2,Joe Burrow,19.22,Jon Samos,False,98.98,False,2022
+Michael Sandor,1,93.92,tp3,Amon-Ra St. Brown,16.4,Jon Samos,False,98.98,False,2022
+Conor Kennedy,1,101.08,tp1,Josh Allen,31.48,Michael Rundell,False,112.72,True,2022
+Conor Kennedy,1,101.08,tp2,Michael Pittman Jr.,23.6,Michael Rundell,False,112.72,True,2022
+Conor Kennedy,1,101.08,tp3,Gabe Davis,16.8,Michael Rundell,False,112.72,True,2022
+Michael Rundell,1,112.72,tp1,D'Andre Swift,26.0,Conor Kennedy,True,101.08,True,2022
+Michael Rundell,1,112.72,tp2,Jalen Hurts,24.72,Conor Kennedy,True,101.08,True,2022
+Michael Rundell,1,112.72,tp3,Russell Wilson,18.8,Conor Kennedy,True,101.08,True,2022
+Chris Bisbee,1,114.18,tp1,Jonathan Taylor,26.5,James Pastrami,True,100.36,True,2022
+Chris Bisbee,1,114.18,tp2,Ja'Marr Chase,24.9,James Pastrami,True,100.36,True,2022
+Chris Bisbee,1,114.18,tp3,James Robinson,19.4,James Pastrami,True,100.36,True,2022
+James Pastrami,1,100.36,tp1,Carson Wentz,28.72,Chris Bisbee,False,114.18,True,2022
+James Pastrami,1,100.36,tp2,Cooper Kupp,26.3,Chris Bisbee,False,114.18,True,2022
+James Pastrami,1,100.36,tp3,Justin Herbert,23.26,Chris Bisbee,False,114.18,True,2022
+Laura Millar,1,86.92,tp1,Stefon Diggs,23.2,Jake Verhulp,True,84.1,False,2022
+Laura Millar,1,86.92,tp2,Lamar Jackson,20.22,Jake Verhulp,True,84.1,False,2022
+Laura Millar,1,86.92,tp3,James Conner,14.0,Jake Verhulp,True,84.1,False,2022
+Jake Verhulp,1,84.1,tp1,Michael Thomas,20.2,Laura Millar,False,86.92,False,2022
+Jake Verhulp,1,84.1,tp2,Leonard Fournette,15.7,Laura Millar,False,86.92,False,2022
+Jake Verhulp,1,84.1,tp3,Buccaneers D/ST,12.0,Laura Millar,False,86.92,False,2022
+Patrick Rundell,1,136.7,tp1,Patrick Mahomes,35.9,Raj Sreenivasan,True,83.46,True,2022
+Patrick Rundell,1,136.7,tp2,Saquon Barkley,31.4,Raj Sreenivasan,True,83.46,True,2022
+Patrick Rundell,1,136.7,tp3,Davante Adams,26.1,Raj Sreenivasan,True,83.46,True,2022
+Raj Sreenivasan,1,83.46,tp1,Justin Jefferson,35.9,Patrick Rundell,False,136.7,False,2022
+Raj Sreenivasan,1,83.46,tp2,AJ Dillon,17.6,Patrick Rundell,False,136.7,False,2022
+Raj Sreenivasan,1,83.46,tp3,Tua Tagovailoa,14.8,Patrick Rundell,False,136.7,False,2022
