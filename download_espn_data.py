@@ -6,6 +6,10 @@ import toml
 YEAR = 2022
 secrets = toml.load(".streamlit/secrets.toml")
 league = League(league_id=443750, year=YEAR, espn_s2=secrets["espn_s2"], swid=secrets["swid"])
+
+
+
+
 all_data = get_season_data(YEAR, league)
 
 all_data.to_csv(f"./fantasy/fantasy_data_{YEAR}.csv", index=False)
