@@ -1,8 +1,8 @@
-from ast import excepthandler
 import streamlit as st
 import pandas as pd
 import altair as alt
 from espn_api.football import League
+from espn_data.get_espn_data import get_season_data
 import espn_data.ff_probability as ff_probability
 import espn_data.build_tables as build_tables
 import numpy as np
@@ -10,6 +10,7 @@ from google.cloud import storage
 from google.oauth2 import service_account
 import json
 import io
+import hashlib
 
 st.set_page_config(
     layout="wide",
@@ -22,52 +23,50 @@ st.markdown(
         \n Each week, two points are awarded -- one for winning your matchup and one for placing Top 6 in points scored"""
 )
 
-
+# Season Selection
 year_selection = st.selectbox("Start by selecting season", options=[2019, 2020, 2021, 2022], index=3)
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
 
-
-# Read in data
-# Get updated 2021 data
-
-
-@st.experimental_memo(ttl=50000)
-def get_fantasy_data(year, bucket_name="fantasy-football-palo-alto-data"):
-    try:
-        # Set GCP creds
-        gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
-        gcp_json_credentials_dict.update(
-            {
-                "private_key": st.secrets["private_key"].replace("\\n", "\n"),
-                "private_key_id": st.secrets["private_key_id"],
-            }
-        )
-        credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
-        client = storage.Client(credentials=credentials)
-
-        bucket = client.bucket(bucket_name)
-        source_file_name = f"fantasy_data_{year}.csv"
-        blob = bucket.blob(source_file_name)
+# Read in data helper functions
+def push_pull_from_gcs(year:int, gcp_json_credentials_dict:dict, bucket_name:str, pull=True, upload_file=None, push=False) -> pd.DataFrame:
+    '''Push or pull the weekly top scores data from GCS. Either put it up or pull it down. '''
+    credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
+    client = storage.Client(credentials=credentials)
+    bucket = client.bucket(bucket_name)
+    source_file_name = f"fantasy_data_{year}.csv"
+    blob = bucket.blob(source_file_name)
+    if pull:
         data = blob.download_as_string()
         df = pd.read_csv(io.BytesIO(data))
-    except:
-        df = pd.read_csv(f"./fantasy/fantasy_data_{year}.csv")
+        return df
+    elif push:
+        blob.upload_from_string(upload_file.to_csv(), 'text/csv')
+        return upload_file
+
+# Read in data from GCS
+def get_fantasy_data(season:int, refresh=False, bucket_name="fantasy-football-palo-alto-data") -> pd.DataFrame:
+    '''Get the data from the GCS bucket. Refresh if given the arg'''
+    # Try to get the data from the bucket
+    gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
+    gcp_json_credentials_dict.update(
+        {
+            "private_key": st.secrets["private_key"].replace("\\n", "\n"),
+            "private_key_id": st.secrets["private_key_id"],
+        }
+    )
+    if refresh:
+        league = League(league_id=443750, year=season, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"])
+        all_data = get_season_data(season, league)
+        df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, upload_file = all_data, push=True)
+    else:
+        df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, pull=True)
     return df
 
 
-season_dict = {
-    "2019": get_fantasy_data(2019),
-    "2020": get_fantasy_data(2020),
-    "2021": get_fantasy_data(2021),
-    "2022": get_fantasy_data(2022),
-}
-# return season_dict[year]
-
-
 # Read in the data
-fantasy_data = season_dict[str(year_selection)]
+fantasy_data = get_fantasy_data(year_selection)
 our_league = League(
     league_id=st.secrets["league_id"], year=year_selection, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
 )
@@ -227,23 +226,15 @@ with st.expander("Teams"):
 
         st.altair_chart(top_scorers_plot)
 
-    # Points per week
-    # with team_col2:
-    #     st.markdown("## Points per week plot")
-    #     st.markdown("#### Points scored for (green) vs points against (orange)")
-    #     st.dataframe(melted_points)
-    #     week_plot = (
-    #         alt.Chart(melted_points)
-    #         .mark_bar(size=15)
-    #         .encode(
-    #             x=alt.X("variable:O", axis=alt.Axis(title="Week", labels=True, ticks=False)),
-    #             y=alt.Y("value", axis=alt.Axis(title="Points")),
-    #             color=alt.Color("variable:N", scale=alt.Scale(scheme="dark2"), title="Points"),
-    #             column=alt.Column(
-    #                 "week:O", title="Week", align="all", header=alt.Header(titleOrient="bottom", labelOrient="bottom")
-    #             ),
-    #         )
-    #         .properties(width=100, height=300)
-    #     )
-
-    #     st.altair_chart(week_plot)
+with st.form("refresh"):
+    refresh_password = st.text_input("Refresh data code", type='password')
+    # You found me! Now enter the truth...
+    # This is obviously not best practice in production and I would use a salted hash system
+    # for any kind of passwords
+    if refresh_password=="tyler rules":
+        st.success("Correct password...updating data")
+        get_fantasy_data(year_selection, refresh=True)
+        st.success("Data uploaded for this week")
+    elif refresh_password:
+        st.error("Wrong Password")
+    st.form_submit_button("Submit")

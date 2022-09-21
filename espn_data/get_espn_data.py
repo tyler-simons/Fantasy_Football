@@ -97,7 +97,6 @@ def weeks_since_start_season():
     return total_diff.days // 7
 
 
-# @st.experimental_memo(ttl=604800)
 def get_season_data(year, league):
     our_league = league
 
