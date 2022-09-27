@@ -42,7 +42,7 @@ def push_pull_from_gcs(year:int, gcp_json_credentials_dict:dict, bucket_name:str
         df = pd.read_csv(io.BytesIO(data))
         return df
     elif push:
-        blob.upload_from_string(upload_file.to_csv(), 'text/csv')
+        blob.upload_from_string(upload_file.to_csv(index=False), 'text/csv')
         return upload_file
 
 # Read in data from GCS
@@ -63,7 +63,6 @@ def get_fantasy_data(season:int, refresh=False, bucket_name="fantasy-football-pa
     else:
         df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, pull=True)
     return df
-
 
 # Read in the data
 fantasy_data = get_fantasy_data(year_selection)
