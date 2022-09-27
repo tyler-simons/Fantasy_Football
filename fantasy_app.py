@@ -231,8 +231,7 @@ with st.form("refresh"):
     # You found me! Now enter the truth...
     # This is obviously not best practice in production and I would use a salted hash system
     # for any kind of passwords
-    refresh_password = True
-    if refresh_password:
+    if refresh_password == "tyler rules":
         st.success("Correct password...updating data")
         get_fantasy_data(year_selection, refresh=True)
         st.success("Data uploaded for this week")
