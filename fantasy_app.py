@@ -59,7 +59,7 @@ def get_fantasy_data(season:int, refresh=False, bucket_name="fantasy-football-pa
     if refresh:
         league = League(league_id=443750, year=season, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"])
         all_data = get_season_data(season, league)
-        df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, upload_file = all_data, push=True)
+        df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, upload_file = all_data, pull=False, push=True)
     else:
         df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, pull=True)
     return df
@@ -231,7 +231,8 @@ with st.form("refresh"):
     # You found me! Now enter the truth...
     # This is obviously not best practice in production and I would use a salted hash system
     # for any kind of passwords
-    if refresh_password=="tyler rules":
+    refresh_password = True
+    if refresh_password:
         st.success("Correct password...updating data")
         get_fantasy_data(year_selection, refresh=True)
         st.success("Data uploaded for this week")
