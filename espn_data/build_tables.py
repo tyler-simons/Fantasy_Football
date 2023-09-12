@@ -36,7 +36,9 @@ def create_top6_and_record_table(fantasy_data):
     """Build the scoreboard starting from raw fantasy data"""
 
     # Top points per week
-    top_scorers = fantasy_data.iloc[fantasy_data.reset_index().groupby(["week"])["points"].idxmax(), :]
+    top_scorers = fantasy_data.iloc[
+        fantasy_data.reset_index().groupby(["week"])["points"].idxmax(), :
+    ]
     summed_tops = top_scorers.groupby("team_name").count()["week"]
     summed_tops = summed_tops.rename("top_scorer_sum")
 
@@ -58,20 +60,30 @@ def create_top6_and_record_table(fantasy_data):
 
     # Add owners names
     added_owners = total_wins
-    top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_index=True)["top_scorer_sum"]
+    top_scorer_final = added_owners.merge(summed_tops, right_index=True, left_index=True)[
+        "top_scorer_sum"
+    ]
 
     # Create the records
     added_owners["record"] = [
-        f"{i}-{j}" for i, j in zip(added_owners.total_wins.to_list(), added_owners.total_losses.to_list())
+        f"{i}-{j}"
+        for i, j in zip(added_owners.total_wins.to_list(), added_owners.total_losses.to_list())
     ]
     added_owners = added_owners.sort_values(["total_wins", "points"], ascending=False)
     sub_owners = added_owners[["record", "points"]]
 
     # Add the times top scorer
-    top_scorer_final = sub_owners.merge(top_scorer_final, how="left", left_index=True, right_index=True).fillna(0)
+    top_scorer_final = sub_owners.merge(
+        top_scorer_final, how="left", left_index=True, right_index=True
+    ).fillna(0)
     top_scorer_final["top_scorer_sum"] = top_scorer_final["top_scorer_sum"].astype("int")
     top_scorer_final.rename(
-        columns={"record": "Standing", "points": "Points For", "top_scorer_sum": "# Times Top Scorer"}, inplace=True
+        columns={
+            "record": "Standing",
+            "points": "Points For",
+            "top_scorer_sum": "# Times Top Scorer",
+        },
+        inplace=True,
     )
     # Top 6 table
     t6_pivot = (
@@ -123,7 +135,9 @@ def player_df_from_line(lineup, first_matchup, week, home_team):
         "opponent",
     ]
     player_df_single_week.columns = player_df_cols
-    sorted_players = player_df_single_week.sort_values("player_points", ascending=False).reset_index(drop=True)
+    sorted_players = player_df_single_week.sort_values(
+        "player_points", ascending=False
+    ).reset_index(drop=True)
 
     return sorted_players
 
@@ -155,11 +169,15 @@ def add_ideal_to_player_df(player_df):
                 positions.remove(set_pos)
                 break
 
-    ideal_lineup = pd.concat(found_positions, axis=1).transpose().sort_values(by="player_pos", key=position_sorter)
-    ideal_lineup["ideal_player"] = True
-    comb_player_ideal = player_df.merge(ideal_lineup[["team_name", "player_name", "ideal_player"]], how="left").fillna(
-        False
+    ideal_lineup = (
+        pd.concat(found_positions, axis=1)
+        .transpose()
+        .sort_values(by="player_pos", key=position_sorter)
     )
+    ideal_lineup["ideal_player"] = True
+    comb_player_ideal = player_df.merge(
+        ideal_lineup[["team_name", "player_name", "ideal_player"]], how="left"
+    ).fillna(False)
     comb_player_ideal["played"] = comb_player_ideal.player_slot != "BE"
     return comb_player_ideal
 
@@ -192,13 +210,16 @@ def build_full_player_df(our_league):
     return pd.concat(full_player_df)
 
 
-@st.experimental_memo(ttl=50000)
+@st.cache_data(ttl=50000)
 def get_waiver_data(year, bucket_name="fantasy-football-palo-alto-data"):
     """Get the waiver dictionary from GCP"""
     # Set GCP creds
     gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
     gcp_json_credentials_dict.update(
-        {"private_key": st.secrets["private_key"].replace("\\n", "\n"), "private_key_id": st.secrets["private_key_id"]}
+        {
+            "private_key": st.secrets["private_key"].replace("\\n", "\n"),
+            "private_key_id": st.secrets["private_key_id"],
+        }
     )
     credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
     storage_client = storage.Client(credentials=credentials)
@@ -216,7 +237,9 @@ def waiver_table(league):
     fa_adds = []
     for activity in activities:
         row = []
-        transaction_date = datetime.fromtimestamp(activity.date / 1000).strftime("%Y-%m-%d %H:%M:%S.%f")
+        transaction_date = datetime.fromtimestamp(activity.date / 1000).strftime(
+            "%Y-%m-%d %H:%M:%S.%f"
+        )
         for step in activity.actions:
             if "FA ADDED" in step or "WAIVER ADDED" in step:
                 row.append(transaction_date)
@@ -239,11 +262,15 @@ def calc_avg_waiver_points_by_team(our_league):
     ).fillna("DRAFTED")
 
     avg_waiver_points = (
-        full_player_df_waivers.query('(action == "WAIVER ADDED" | action == "FA ADDED") & played == True')
+        full_player_df_waivers.query(
+            '(action == "WAIVER ADDED" | action == "FA ADDED") & played == True'
+        )
         .groupby(["team_name"], as_index=False)
         .mean()[["team_name", "player_points"]]
     )
-    avg_waiver_points = avg_waiver_points.rename(columns={"player_points": "average_waiver_points"}).fillna(0)
+    avg_waiver_points = avg_waiver_points.rename(
+        columns={"player_points": "average_waiver_points"}
+    ).fillna(0)
     return avg_waiver_points
 
 
@@ -251,7 +278,9 @@ def calc_avg_waiver_points_by_team(our_league):
 def win_loss_marings(ffdata):
     """Create a dataframe of team, avg win margin, and avg loss margin"""
     ffdata["point_diff"] = ffdata.points - ffdata.points_against
-    win_loss_diff_table = ffdata.groupby(["team_name", "h2h_win"], as_index=False)["point_diff"].mean()
+    win_loss_diff_table = ffdata.groupby(["team_name", "h2h_win"], as_index=False)[
+        "point_diff"
+    ].mean()
     win_loss_pivot = win_loss_diff_table.pivot("team_name", "h2h_win", "point_diff").fillna(0)
     win_loss_pivot = win_loss_pivot.reset_index().rename_axis(None, axis=1)
     win_loss_pivot.columns = ["team_name", "avg_margin_of_loss", "avg_margin_of_victory"]

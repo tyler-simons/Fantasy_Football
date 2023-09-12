@@ -9,14 +9,13 @@ import logging
 import os
 
 # Only need this if you're running this code locally.
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'/your_GCP_creds/credentials.json'
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"/your_GCP_creds/credentials.json"
 
 
 def save_season_data(request):
     """Save the data for 2021 on GCP"""
 
-    for year in [2022]:
-
+    for year in [2023]:
         BUCKET_NAME = "fantasy-football-palo-alto-data"
         PROJECT_NAME = "fantasy-football-palo-alto"
 
@@ -38,7 +37,9 @@ def save_season_data(request):
         bucket = client.get_bucket(BUCKET_NAME)
 
         # Save the data
-        bucket.blob(f"fantasy_data_{year}.csv").upload_from_string(season_data_2021.to_csv(index=False), "text/csv")
+        bucket.blob(f"fantasy_data_{year}.csv").upload_from_string(
+            season_data_2021.to_csv(index=False), "text/csv"
+        )
         logging.info("Data saved to GCS")
 
         # Download the waiver data
@@ -53,4 +54,3 @@ def save_season_data(request):
         logging.info("Waiver data saved")
 
     return "Finished"
-

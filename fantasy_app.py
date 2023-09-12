@@ -12,10 +12,10 @@ import json
 import io
 import hashlib
 
-st.set_page_config(
-    layout="wide",
-    page_title="Fantasy Football Dashboard",
-)
+# st.set_page_config(
+#     layout="wide",
+#     page_title="Fantasy Football Dashboard",
+# )
 st.title("PA Fantasy Scoreboard")
 st.markdown(
     """Dashboard displaying our scores from the past few years of ESPN Fantasy Football. 
@@ -24,14 +24,24 @@ st.markdown(
 )
 
 # Season Selection
-year_selection = st.selectbox("Start by selecting season", options=[2019, 2020, 2021, 2022], index=3)
+year_selection = st.selectbox(
+    "Start by selecting season", options=[2019, 2020, 2021, 2022, 2023], index=4
+)
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
 
+
 # Read in data helper functions
-def push_pull_from_gcs(year:int, gcp_json_credentials_dict:dict, bucket_name:str, pull=True, upload_file=None, push=False) -> pd.DataFrame:
-    '''Push or pull the weekly top scores data from GCS. Either put it up or pull it down. '''
+def push_pull_from_gcs(
+    year: int,
+    gcp_json_credentials_dict: dict,
+    bucket_name: str,
+    pull=True,
+    upload_file=None,
+    push=False,
+) -> pd.DataFrame:
+    """Push or pull the weekly top scores data from GCS. Either put it up or pull it down."""
     credentials = service_account.Credentials.from_service_account_info(gcp_json_credentials_dict)
     client = storage.Client(credentials=credentials)
     bucket = client.bucket(bucket_name)
@@ -42,12 +52,15 @@ def push_pull_from_gcs(year:int, gcp_json_credentials_dict:dict, bucket_name:str
         df = pd.read_csv(io.BytesIO(data))
         return df
     elif push:
-        blob.upload_from_string(upload_file.to_csv(index=False), 'text/csv')
+        blob.upload_from_string(upload_file.to_csv(index=False), "text/csv")
         return upload_file
 
+
 # Read in data from GCS
-def get_fantasy_data(season:int, refresh=False, bucket_name="fantasy-football-palo-alto-data") -> pd.DataFrame:
-    '''Get the data from the GCS bucket. Refresh if given the arg'''
+def get_fantasy_data(
+    season: int, refresh=False, bucket_name="fantasy-football-palo-alto-data"
+) -> pd.DataFrame:
+    """Get the data from the GCS bucket. Refresh if given the arg"""
     # Try to get the data from the bucket
     gcp_json_credentials_dict = json.load(open("fantasy_profile.json", "r"))
     gcp_json_credentials_dict.update(
@@ -57,17 +70,30 @@ def get_fantasy_data(season:int, refresh=False, bucket_name="fantasy-football-pa
         }
     )
     if refresh:
-        league = League(league_id=443750, year=season, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"])
+        league = League(
+            league_id=443750, year=season, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
+        )
         all_data = get_season_data(season, league)
-        df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, upload_file = all_data, pull=False, push=True)
+        df = push_pull_from_gcs(
+            season,
+            gcp_json_credentials_dict,
+            bucket_name,
+            upload_file=all_data,
+            pull=False,
+            push=True,
+        )
     else:
         df = push_pull_from_gcs(season, gcp_json_credentials_dict, bucket_name, pull=True)
     return df
 
+
 # Read in the data
 fantasy_data = get_fantasy_data(year_selection)
 our_league = League(
-    league_id=st.secrets["league_id"], year=year_selection, espn_s2=st.secrets["espn_s2"], swid=st.secrets["swid"]
+    league_id=st.secrets["league_id"],
+    year=year_selection,
+    espn_s2=st.secrets["espn_s2"],
+    swid=st.secrets["swid"],
 )
 # Make a single table
 cols_remove = ["name", "tp_names", "tp_points"]
@@ -78,7 +104,7 @@ format_dict = {"Points For": "{:.5}"}
 
 records_final = records.style.bar(subset="Points For", color="darkblue").format(format_dict)
 
-c1, c2 = st.columns([2,2])
+c1, c2 = st.columns([2, 2])
 c1.subheader(f"{records_final.index[0]} is winning")
 c2.subheader(f"{records_final.index[-1]} is dead last")
 
@@ -110,14 +136,16 @@ with st.expander("Matchup Luck"):
     )
 
     # Select the liklihood wins
-    num_wins = records["Standing"].str.extract("(^\d{,2})").astype("int").reset_index()  # .reset_index()
+    num_wins = (
+        records["Standing"].str.extract("(^\d{,2})").astype("int").reset_index()
+    )  # .reset_index()
     num_wins.columns = ["team_name", "wins"]
     # Issue with the column names in the num wins section
     # print(num_wins)
     num_wins = list(zip(num_wins.team_name, num_wins.wins))
+
     # Color a cell if it the right number of wins
     def style_specific_cell(x, wins):
-
         color = "color: red"
         df1 = pd.DataFrame("", index=x.index, columns=x.columns)
 
@@ -154,7 +182,9 @@ with st.expander("Margin of Victory/Loss + Waiver Points"):
                 x=alt.X("average_waiver_points", title="Avg. points added via waivers"),
                 tooltip=[
                     alt.Tooltip("team_name", title="Team Name"),
-                    alt.Tooltip("average_waiver_points", format=".2f", title="Avg. points from waivers"),
+                    alt.Tooltip(
+                        "average_waiver_points", format=".2f", title="Avg. points from waivers"
+                    ),
                 ],
             )
         )
@@ -178,13 +208,15 @@ with st.expander("Teams"):
 
     a.metric("Max points (up from average)", max_points, np.round(max_points - avg_points, 2))
     b.metric("Min points (down from average)", min_points, np.round(min_points - avg_points, 2))
-    if len(selected_team.points)>1:
+    if len(selected_team.points) > 1:
         c.metric("Standard deviation of points", round(selected_team.points.std()))
 
     # Team Table
     st.markdown("## Team Table")
     st.dataframe(
-        selected_team[["week", "points", "opponent", "points_against", "h2h_win", "top6_win"]].rename(
+        selected_team[
+            ["week", "points", "opponent", "points_against", "h2h_win", "top6_win"]
+        ].rename(
             columns={
                 "week": "Week",
                 "points": "Points For",
@@ -211,7 +243,9 @@ with st.expander("Teams"):
             alt.Chart(top_scorers)
             .mark_bar(size=15)
             .encode(
-                x=alt.X("tp_names", axis=alt.Axis(title="Player", labels=True, ticks=True), sort="-y"),
+                x=alt.X(
+                    "tp_names", axis=alt.Axis(title="Player", labels=True, ticks=True), sort="-y"
+                ),
                 y=alt.Y(
                     "tp_points:Q",
                     axis=alt.Axis(title="Times a top performer"),
@@ -226,7 +260,7 @@ with st.expander("Teams"):
         st.altair_chart(top_scorers_plot)
 
 with st.form("refresh"):
-    refresh_password = st.text_input("Refresh data code", type='password')
+    refresh_password = st.text_input("Refresh data code", type="password")
     # You found me! Now enter the truth...
     # This is obviously not best practice in production and I would use a salted hash system
     # for any kind of passwords
