@@ -12,10 +12,10 @@ import json
 import io
 import hashlib
 
-# st.set_page_config(
-#     layout="wide",
-#     page_title="Fantasy Football Dashboard",
-# )
+st.set_page_config(
+    layout="wide",
+    page_title="Fantasy Football Dashboard",
+)
 st.title("PA Fantasy Scoreboard")
 st.markdown(
     """Dashboard displaying our scores from the past few years of ESPN Fantasy Football. 
@@ -169,7 +169,7 @@ with st.expander("Margin of Victory/Loss + Waiver Points"):
         st.markdown("## Average margin of loss or victory")
         st.markdown("By how much did each team win or lose?")
         margins_wavier_pts = build_tables.calc_margins_waivers(fantasy_data, our_league)
-        st.altair_chart(build_tables.avg_margin_chart(margins_wavier_pts))
+        st.altair_chart(build_tables.avg_margin_chart(margins_wavier_pts), use_container_width=True)
 
     with col2_m:
         st.markdown("## Average points from waiver pickups")
@@ -186,7 +186,8 @@ with st.expander("Margin of Victory/Loss + Waiver Points"):
                         "average_waiver_points", format=".2f", title="Avg. points from waivers"
                     ),
                 ],
-            )
+            ),
+            use_container_width=True,
         )
 
 with st.expander("Teams"):

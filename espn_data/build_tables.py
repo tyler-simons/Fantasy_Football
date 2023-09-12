@@ -87,7 +87,7 @@ def create_top6_and_record_table(fantasy_data):
     )
     # Top 6 table
     t6_pivot = (
-        fantasy_points.pivot("team_name", "week", "points")
+        fantasy_points.pivot(index="team_name", columns="week", values="points")
         .loc[top_scorer_final.index]
         .style.apply(highlight_true)
         .format("{:.5}")
@@ -260,16 +260,17 @@ def calc_avg_waiver_points_by_team(our_league):
     full_player_df_waivers = full_player_table.merge(
         transaction_table[["team_name", "player_name", "action"]], how="left"
     ).fillna("DRAFTED")
-
     avg_waiver_points = (
-        full_player_df_waivers.query(
-            '(action == "WAIVER ADDED" | action == "FA ADDED") & played == True'
-        )
-        .groupby(["team_name"], as_index=False)
-        .mean()[["team_name", "player_points"]]
+        full_player_df_waivers[
+            (full_player_df_waivers["action"].isin(["WAIVER ADDED", "FA ADDED"]))
+            & (full_player_df_waivers["played"] == 1)
+        ]
+        .groupby("team_name")
+        .agg(avg_player_points=("player_points", "mean"))
+        .reset_index()
     )
     avg_waiver_points = avg_waiver_points.rename(
-        columns={"player_points": "average_waiver_points"}
+        columns={"avg_player_points": "average_waiver_points"}
     ).fillna(0)
     return avg_waiver_points
 
@@ -281,7 +282,9 @@ def win_loss_marings(ffdata):
     win_loss_diff_table = ffdata.groupby(["team_name", "h2h_win"], as_index=False)[
         "point_diff"
     ].mean()
-    win_loss_pivot = win_loss_diff_table.pivot("team_name", "h2h_win", "point_diff").fillna(0)
+    win_loss_pivot = win_loss_diff_table.pivot(
+        index="team_name", columns="h2h_win", values="point_diff"
+    ).fillna(0)
     win_loss_pivot = win_loss_pivot.reset_index().rename_axis(None, axis=1)
     win_loss_pivot.columns = ["team_name", "avg_margin_of_loss", "avg_margin_of_victory"]
     return win_loss_pivot

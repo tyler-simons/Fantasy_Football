@@ -69,4 +69,7 @@ def build_probability_distribution(ffdata):
         total_wins = total_wins.rename(name)
         simulated_wins.append(total_wins.value_counts() / total_wins.value_counts().sum())
     simulated_wins = [i.reindex(range(0, ffdata.week.max() * 2 + 1)) for i in simulated_wins]
-    return pd.concat(simulated_wins, axis=1).fillna(0)
+    prob_table = pd.concat(simulated_wins, axis=1).fillna(0)
+    prob_table.columns = all_team_names
+
+    return prob_table
