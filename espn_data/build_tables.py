@@ -234,6 +234,7 @@ def get_waiver_data(year, bucket_name="fantasy-football-palo-alto-data"):
 def waiver_table(league):
     """Create a table of teams, transaction, and player_names"""
     activities = get_waiver_data(league.year)
+    st.write(activities)
     fa_adds = []
     for activity in activities:
         row = []
@@ -247,7 +248,6 @@ def waiver_table(league):
                 row.append(step[1])
                 row.append(step[2].name)
                 fa_adds.append(row)
-
     return pd.DataFrame(fa_adds, columns=["date", "team_name", "action", "player_name"])
 
 

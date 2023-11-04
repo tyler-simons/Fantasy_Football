@@ -15,6 +15,7 @@ league = League(league_id=443750, year=YEAR, espn_s2=secrets["espn_s2"], swid=se
 
 # Download the waiver data
 ra = league.recent_activity(2000)
+print(len(ra))
 filename = f"./wd_{YEAR}.pickle"
 with open(filename, "wb") as handle:
     pickle.dump(ra, handle, protocol=pickle.HIGHEST_PROTOCOL)

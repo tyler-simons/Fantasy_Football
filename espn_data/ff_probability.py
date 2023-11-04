@@ -60,6 +60,10 @@ def simulate_season(team_name, team_dict, top6_dict):
 def build_probability_distribution(ffdata):
     """Simulate the seasons for all of the teams"""
     raw_scores = ffdata[["team_name", "week", "points"]].drop_duplicates()
+    # Count the number of each week and if there are not 12 of them, drop that week
+    week_counts = raw_scores.week.value_counts()
+    week_counts = week_counts[week_counts == 12]
+    raw_scores = raw_scores[raw_scores.week.isin(week_counts.index)]
     team_dict = create_team_dict(raw_scores)
     top6_dict = create_top6_dict(ffdata)
     all_team_names = sorted(list(set(raw_scores.team_name.values)))
