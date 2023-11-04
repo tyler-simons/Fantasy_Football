@@ -89,6 +89,12 @@ def get_fantasy_data(
 
 # Read in the data
 fantasy_data = get_fantasy_data(year_selection)
+# If not everyone has played, remove the week
+week_counts = fantasy_data["week"].value_counts()
+week_counts = week_counts[week_counts == 12 * 3]
+st.write(week_counts)
+fantasy_data = fantasy_data[fantasy_data.week.isin(week_counts.index)]
+
 our_league = League(
     league_id=st.secrets["league_id"],
     year=year_selection,
