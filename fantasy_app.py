@@ -24,9 +24,7 @@ st.markdown(
 )
 
 # Season Selection
-year_selection = st.selectbox(
-    "Start by selecting season", options=[2019, 2020, 2021, 2022, 2023], index=4
-)
+year_selection = 2023
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
