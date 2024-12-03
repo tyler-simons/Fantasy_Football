@@ -4,7 +4,7 @@ from espn_api.football import League
 import toml
 import pickle
 
-YEAR = 2023
+YEAR = 2024
 secrets = toml.load(".streamlit/secrets.toml")
 league = League(league_id=443750, year=YEAR, espn_s2=secrets["espn_s2"], swid=secrets["swid"])
 

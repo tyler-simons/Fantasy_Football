@@ -14,23 +14,35 @@ def box_score_to_csv(box_match, week, year, our_league):
 
     # Home team
     home_points = box_match_1.home_score
-    home_team_name = box_match_1.home_team.owner
+    home_team_name = (
+        box_match_1.home_team.owners[0]["firstName"]
+        + " "
+        + box_match_1.home_team.owners[0]["lastName"]
+    )
 
     home_player_points = []
     for player in box_match_1.home_lineup:
         home_player_points.append([player.name, player.points])
-    player_df = pd.DataFrame(home_player_points, columns=["player", "points"]).sort_values("points", ascending=False)
+    player_df = pd.DataFrame(home_player_points, columns=["player", "points"]).sort_values(
+        "points", ascending=False
+    )
     home_top_3_players = player_df.head(3).player.to_list()
     home_top_3_player_points = player_df.head(3).points.to_list()
 
     # Away team
     away_points = box_match_1.away_score
-    away_team_name = box_match_1.away_team.owner
+    away_team_name = (
+        box_match_1.away_team.owners[0]["firstName"]
+        + " "
+        + box_match_1.away_team.owners[0]["lastName"]
+    )
 
     away_player_points = []
     for player in box_match_1.away_lineup:
         away_player_points.append([player.name, player.points])
-    player_df = pd.DataFrame(away_player_points, columns=["player", "points"]).sort_values("points", ascending=False)
+    player_df = pd.DataFrame(away_player_points, columns=["player", "points"]).sort_values(
+        "points", ascending=False
+    )
     away_top_3_players = player_df.head(3).player.to_list()
     away_top_3_player_points = player_df.head(3).points.to_list()
 

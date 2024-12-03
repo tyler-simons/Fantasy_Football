@@ -104,9 +104,17 @@ def player_df_from_line(lineup, first_matchup, week, home_team):
 
         # Set team name
         if home_team:
-            player_info_list.append(first_matchup.home_team.owner)
+            player_info_list.append(
+                first_matchup.home_team.owners[0]["firstName"]
+                + " "
+                + first_matchup.home_team.owners[0]["lastName"]
+            )
         else:
-            player_info_list.append(first_matchup.away_team.owner)
+            player_info_list.append(
+                first_matchup.away_team.owners[0]["firstName"]
+                + " "
+                + first_matchup.away_team.owners[0]["lastName"]
+            )
 
         # Set player info
         player_info_list.append(week)
@@ -117,9 +125,17 @@ def player_df_from_line(lineup, first_matchup, week, home_team):
         player_info_list.append(player.points)
 
         if home_team:
-            player_info_list.append(first_matchup.away_team.owner)
+            player_info_list.append(
+                first_matchup.away_team.owners[0]["firstName"]
+                + " "
+                + first_matchup.away_team.owners[0]["lastName"]
+            )
         else:
-            player_info_list.append(first_matchup.home_team.owner)
+            player_info_list.append(
+                first_matchup.home_team.owners[0]["firstName"]
+                + " "
+                + first_matchup.home_team.owners[0]["lastName"]
+            )
 
         team_info_list.append(player_info_list)
 
@@ -243,7 +259,7 @@ def waiver_table(league):
         for step in activity.actions:
             if "FA ADDED" in step or "WAIVER ADDED" in step:
                 row.append(transaction_date)
-                row.append(step[0].owner)
+                row.append(step[0].owners[0]["firstName"] + " " + step[0].owners[0]["lastName"])
                 row.append(step[1])
                 row.append(step[2].name)
                 fa_adds.append(row)

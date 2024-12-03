@@ -24,7 +24,7 @@ st.markdown(
 )
 
 # Season Selection
-year_selection = 2023
+year_selection = 2024
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
@@ -86,7 +86,7 @@ def get_fantasy_data(
 
 
 # Read in the data
-fantasy_data = get_fantasy_data(year_selection)
+fantasy_data = get_fantasy_data(year_selection, refresh=False)
 # If not everyone has played, remove the week
 week_counts = fantasy_data["week"].value_counts()
 week_counts = week_counts[week_counts == 12 * 3]
