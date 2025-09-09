@@ -14,13 +14,24 @@ import hashlib
 
 st.set_page_config(
     layout="wide",
-    page_title="Fantasy Football Dashboard",
+    page_title="PA Fantasy Scoreboard",
+    initial_sidebar_state="expanded",
 )
 st.title("PA Fantasy Scoreboard")
 st.markdown(
-    """Dashboard displaying our scores from the past few years of ESPN Fantasy Football. 
-        You can see the current scoreboard, top scores per week, how unlucky you've been, and a variety of other metrics. 
-        \n Each week, two points are awarded -- one for winning your matchup and one for placing Top 6 in points scored"""
+    """<style>
+    .css-18e3th9 {
+        padding-top: 1rem;
+    }
+    </style>""",
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "A dashboard displaying scores from the past few years of ESPN Fantasy Football. "
+    "You can see the current scoreboard, top scores per week, how unlucky you've been, and a variety of other metrics."
+)
+st.markdown(
+    "**Each week, two points are awarded** — one for winning your matchup and one for placing Top 6 in points scored."
 )
 
 # Season Selection
@@ -103,24 +114,28 @@ cols_remove = ["name", "tp_names", "tp_points"]
 fantasy_points = fantasy_data.drop(columns=cols_remove).drop_duplicates()
 records, t6_pivot = build_tables.create_top6_and_record_table(fantasy_data)
 
-format_dict = {"Points For": "{:.5}"}
+records.index.name = "Team"
 
-records_final = records.style.bar(subset="Points For", color="darkblue").format(format_dict)
+format_dict = {"Points For": "{:.2f}"}
+records = records.rename(columns={"# Times Top Scorer": "Times Top Scorer"})
+records_final = records.style.bar(subset="Points For", color="#1c83e1").format(format_dict)
 
-c1, c2 = st.columns([2, 2])
-c1.subheader(f"{records_final.index[0]} is winning")
-c2.subheader(f"{records_final.index[-1]} is dead last")
+c1, c2 = st.columns(2)
+c1.metric("Winning", records.index[0], f"{records['Points For'].iloc[0]:.2f} points")
+c2.metric(
+    "Dead Last",
+    records.index[-1],
+    f"{records['Points For'].iloc[-1]:.2f} points",
+    delta_color="inverse",
+)
+with st.expander("Records and Total Points", expanded=True):
+    st.table(records_final)
 
-st.markdown("<br>Records and Total Points", unsafe_allow_html=True)
-st.table(records_final)
+t6_pivot.index.name = "Team"
+with st.expander("Top 6 Scores per Week", expanded=True):
+    st.markdown("Won matchup scores are in green with losses in red. Top weekly score is gold.")
+    st.table(t6_pivot)
 
-st.markdown("----")
-st.markdown("<br>Top 6 Scores per Week", unsafe_allow_html=True)
-st.markdown("Won matchup scores are in green with losses in red. Top weekly score is gold. ")
-st.table(t6_pivot)
-
-
-st.markdown("----")
 
 ## Team selection
 
@@ -263,15 +278,16 @@ with st.expander("Teams"):
 
         st.altair_chart(top_scorers_plot)
 
-with st.form("refresh"):
-    refresh_password = st.text_input("Refresh data code", type="password")
-    # You found me! Now enter the truth...
-    # This is obviously not best practice in production and I would use a salted hash system
-    # for any kind of passwords
-    if refresh_password == "tyler rules":
-        st.success("Correct password...updating data")
-        get_fantasy_data(year_selection, refresh=True)
-        st.success("Data uploaded for this week")
-    elif refresh_password:
-        st.error("Wrong Password")
-    st.form_submit_button("Submit")
+with st.expander("Refresh Data"):
+    with st.form("refresh"):
+        refresh_password = st.text_input("Enter refresh code", type="password")
+        # You found me! Now enter the truth...
+        # This is obviously not best practice in production and I would use a salted hash system
+        # for any kind of passwords
+        if refresh_password == "tyler rules":
+            st.success("Correct password...updating data")
+            get_fantasy_data(year_selection, refresh=True)
+            st.success("Data uploaded for this week")
+        elif refresh_password:
+            st.error("Wrong Password")
+        st.form_submit_button("Submit")
