@@ -1,0 +1,37 @@
+team_name,week,points,name,tp_names,tp_points,opponent,h2h_win,points_against,top6_win,year
+Raj Sreenivasan,1,93.46,tp1,Jalen Hurts,24.28,Patrick Rundell,False,101.52,False,2025
+Raj Sreenivasan,1,93.46,tp2,Baker Mayfield,22.58,Patrick Rundell,False,101.52,False,2025
+Raj Sreenivasan,1,93.46,tp3,Geno Smith,18.48,Patrick Rundell,False,101.52,False,2025
+Patrick Rundell,1,101.52,tp1,Lamar Jackson,29.36,Raj Sreenivasan,True,93.46,False,2025
+Patrick Rundell,1,101.52,tp2,Zay Flowers,25.6,Raj Sreenivasan,True,93.46,False,2025
+Patrick Rundell,1,101.52,tp3,Keon Coleman,22.2,Raj Sreenivasan,True,93.46,False,2025
+Chris Bisbee,1,108.84,tp1,Justin Herbert,28.92,Tyler Simons,True,83.52,True,2025
+Chris Bisbee,1,108.84,tp2,J.K. Dobbins,13.8,Tyler Simons,True,83.52,True,2025
+Chris Bisbee,1,108.84,tp3,Alvin Kamara,12.7,Tyler Simons,True,83.52,True,2025
+Tyler Simons,1,83.52,tp1,Patrick Mahomes,26.02,Chris Bisbee,False,108.84,False,2025
+Tyler Simons,1,83.52,tp2,Aaron Rodgers,25.66,Chris Bisbee,False,108.84,False,2025
+Tyler Simons,1,83.52,tp3,Keenan Allen,16.3,Chris Bisbee,False,108.84,False,2025
+Laura Millar,1,100.9,tp1,Justin Fields,29.52,Jake Verhulp,True,82.26,False,2025
+Laura Millar,1,100.9,tp2,Daniel Jones,29.48,Jake Verhulp,True,82.26,False,2025
+Laura Millar,1,100.9,tp3,Breece Hall,16.5,Jake Verhulp,True,82.26,False,2025
+Jake Verhulp,1,82.26,tp1,Broncos D/ST,18.0,Laura Millar,False,100.9,False,2025
+Jake Verhulp,1,82.26,tp2,Courtland Sutton,15.1,Laura Millar,False,100.9,False,2025
+Jake Verhulp,1,82.26,tp3,Jacory Croskey-Merritt,14.2,Laura Millar,False,100.9,False,2025
+Jon Samos,1,129.42,tp1,Derrick Henry,29.7,James Pastrami,True,114.84,True,2025
+Jon Samos,1,129.42,tp2,Michael Penix Jr.,24.02,James Pastrami,True,114.84,True,2025
+Jon Samos,1,129.42,tp3,Puka Nacua,19.1,James Pastrami,True,114.84,True,2025
+James Pastrami,1,114.84,tp1,Caleb Williams,24.24,Jon Samos,False,129.42,True,2025
+James Pastrami,1,114.84,tp2,Bijan Robinson,22.4,Jon Samos,False,129.42,True,2025
+James Pastrami,1,114.84,tp3,Javonte Williams,19.4,Jon Samos,False,129.42,True,2025
+Michael Sandor,1,120.24,tp1,Jayden Daniels,20.12,Conor Kennedy,True,65.74,True,2025
+Michael Sandor,1,120.24,tp2,Travis Etienne Jr.,18.1,Conor Kennedy,True,65.74,True,2025
+Michael Sandor,1,120.24,tp3,Chuba Hubbard,16.4,Conor Kennedy,True,65.74,True,2025
+Conor Kennedy,1,65.74,tp1,Michael Pittman Jr.,17.0,Michael Sandor,False,120.24,False,2025
+Conor Kennedy,1,65.74,tp2,CeeDee Lamb,15.5,Michael Sandor,False,120.24,False,2025
+Conor Kennedy,1,65.74,tp3,Rome Odunze,12.6,Michael Sandor,False,120.24,False,2025
+Michael Rundell,1,111.74,tp1,Josh Allen,39.76,Kyle Samos,False,125.24,True,2025
+Michael Rundell,1,111.74,tp2,James Cook,18.7,Kyle Samos,False,125.24,True,2025
+Michael Rundell,1,111.74,tp3,Brock Purdy,16.78,Kyle Samos,False,125.24,True,2025
+Kyle Samos,1,125.24,tp1,J.J. McCarthy,22.22,Michael Rundell,True,111.74,True,2025
+Kyle Samos,1,125.24,tp2,Emeka Egbuka,21.6,Michael Rundell,True,111.74,True,2025
+Kyle Samos,1,125.24,tp3,Deebo Samuel,19.1,Michael Rundell,True,111.74,True,2025
