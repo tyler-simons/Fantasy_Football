@@ -15,7 +15,7 @@ import os
 def save_season_data(request):
     """Save the data for 2021 on GCP"""
 
-    for year in [2024]:
+    for year in [2025]:
         BUCKET_NAME = "fantasy-football-palo-alto-data"
         PROJECT_NAME = "fantasy-football-palo-alto"
 

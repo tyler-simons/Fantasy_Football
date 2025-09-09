@@ -24,7 +24,7 @@ st.markdown(
 )
 
 # Season Selection
-year_selection = 2024
+year_selection = 2025
 year = year_selection
 st.markdown("----")
 st.header(f"{year_selection} Regular Season Summary")
